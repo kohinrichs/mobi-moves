@@ -1,21 +1,34 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { WorkoutCard } from "./workouts/WorkoutCard"
+import { WorkoutList } from "./workouts/WorkoutList"
+import { WorkoutProvider } from "./workouts/WorkoutProvider"
+import { WorkoutView } from "./workouts/WorkoutView"
 import { MoveProvider } from "./moves/MoveProvider"
 import { MoveList } from "./moves/MoveList"
 import { MoveDetail } from "./moves/MoveDetail"
 import { MoveForm } from "./moves/MoveForm"
 import { EquipmentProvider } from "./extras/EquipmentProvider"
 import { MuscleGroupProvider } from "./extras/MuscleGroupProvider"
+import { MoveCombinationProvider } from "./extras/MoveCombinationProvider"
 
 
 export const ApplicationViews = () => {
     return (
         <>
             {/* Render the workout library when http://localhost:3000/ */}
-            <Route exact path="/">
-                <WorkoutCard />
-            </Route>
+            <WorkoutProvider>
+                <Route exact path="/workouts">
+                    <WorkoutList />
+                </Route>
+            </WorkoutProvider>
+
+            <WorkoutProvider>
+                <MoveCombinationProvider>
+                    <Route path="/workouts/view/:workoutId(\d+)">
+                        <WorkoutView />
+                    </Route>
+                </MoveCombinationProvider>
+            </WorkoutProvider>
 
             {/* Render the excercise library when http://localhost:3000/moves */}
             <MoveProvider>

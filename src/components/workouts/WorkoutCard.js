@@ -1,7 +1,18 @@
 import React from "react"
+import { useHistory } from "react-router-dom"
+import "./Workout.css"
 
-export const WorkoutCard = () => (
-    <section className="workout">
-        <h3 className="workout__name">Arms 01</h3>
-    </section>
-)
+
+export const WorkoutCard = ({ workout }) => {
+
+const history = useHistory()
+
+    return (
+        <section className="workout">
+            <h3 className="workout__name">{workout.name}</h3>
+            <button onClick={() => {
+                history.push(`/workouts/view/${workout.id}`)
+            }}>Details</button>
+        </section>
+    )
+}
