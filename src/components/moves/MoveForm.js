@@ -88,7 +88,7 @@ export const MoveForm = () => {
           <fieldset>
               <div className="form-group">
                   <label htmlFor="equipment">What equipment do you need? </label>
-                  <select defaultValue={move.equipmentId} name="equipmentId" id="equipmentId" onChange={handleControlledInputChange} className="form-control" >
+                  <select defaultValue={move.equipmentId} name="equipment" id="equipmentId" onChange={handleControlledInputChange} className="form-control" >
                       <option value="0">Select your equipment</option>
                       {equipment.map(e => (
                           <option key={e.id} value={e.id}>
@@ -100,7 +100,7 @@ export const MoveForm = () => {
           </fieldset>
           <fieldset>
               <div className="form-group">
-                  <label htmlFor="muscleGroupId">Select a muscle group: </label>
+                  <label htmlFor="muscleGroup">Select a muscle group: </label>
                   <select defaultValue={move.muscleGroupId} name="muscleGroup" id="muscleGroupId" onChange={handleControlledInputChange} className="form-control" >
                       <option value="0">Select a muscle group</option>
                       {muscleGroup.map(m => (

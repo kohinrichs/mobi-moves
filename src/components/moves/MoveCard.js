@@ -13,7 +13,9 @@ const history = useHistory()
             <button onClick={() => {
                 history.push(`/moves/detail/${move.id}`)
             }}>Details</button>
+            
             {/* <button onClick={() => {
+                //Click Event that does something put doesnt push
                 history.push(`/moves/detail/${move.id}`)
             }}>Add to Workout</button> */}
         </section>

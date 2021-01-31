@@ -10,6 +10,9 @@ import { MoveForm } from "./moves/MoveForm"
 import { EquipmentProvider } from "./extras/EquipmentProvider"
 import { MuscleGroupProvider } from "./extras/MuscleGroupProvider"
 import { MoveCombinationProvider } from "./extras/MoveCombinationProvider"
+import { BuildAWorkoutForm } from "./moves/BuildAWorkoutForm"
+import { IntervalProvider } from "./extras/IntervalProvider"
+import { SetProvider } from "./extras/SetProvider"
 
 
 export const ApplicationViews = () => {
@@ -40,6 +43,20 @@ export const ApplicationViews = () => {
                     <MoveDetail />
                 </Route>
             </MoveProvider>
+
+
+            <WorkoutProvider>
+                <MoveCombinationProvider>
+                    <IntervalProvider>
+                        <SetProvider>
+                            <Route exact path="/moves">
+                                <BuildAWorkoutForm />
+                            </Route>
+                        </SetProvider>
+                    </IntervalProvider>
+                </MoveCombinationProvider>
+            </WorkoutProvider>
+            
 
             <MoveProvider>
                 <EquipmentProvider>
