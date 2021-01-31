@@ -9,11 +9,6 @@ export const WorkoutView = () => {
   const { getWorkoutById, deleteWorkout } = useContext(WorkoutContext)
   const { moveCombinations, getMoveCombinations, deleteMoveCombination } = useContext(MoveCombinationContext)
 
-    // Will need to get all the MoveCombinations and filter through them to find the ones that have a workout Id that matches the workout Id of the current view
-    // once you have the filtered array of objects, you'll need to map over them to fill in MoveCombinationCards
-
-    // Could also try to use information from the two things to make a new object
-
 const {workoutId} = useParams();
 
   const [workout, setWorkout] = useState({})
@@ -28,6 +23,10 @@ const {workoutId} = useParams();
         history.push("/workouts")
       })
   }
+
+  // There are multiple move combinations associated with each workout. To DELETE the MoveCombinations associated with a workout, you would need to filter 
+  // all of the MoveCombinations and delete each instance with a matching workoutId. You would need to do this within the handleDelete function
+  // FilteredArray already has all of the mc that match this workout
 
     useEffect(() => {
         getMoveCombinations()
