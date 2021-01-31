@@ -4,12 +4,19 @@ import "./Move.css"
 import { useParams, useHistory } from "react-router-dom"
 
 export const MoveDetail = () => {
-  const { getMoveById } = useContext(MoveContext)
+  const { getMoveById, deleteMove } = useContext(MoveContext)
 
 	const [move, setMove] = useState({})
 
 	const {moveId} = useParams();
-	const history = useHistory();
+  const history = useHistory();
+  
+  const handleDelete = () => {
+    deleteMove(move.id)
+      .then(() => {
+        history.push("/moves")
+      })
+  }
 
   useEffect(() => {
     getMoveById(moveId)
@@ -24,6 +31,7 @@ export const MoveDetail = () => {
       <div className="move__description">{move.description}</div>
       <div className="move__equipment">Equipment: {move.equipment?.name}</div>
       <div className="move__muscleGroup">Muscle Group: {move.muscleGroup?.name}</div>
+      <button onClick={handleDelete}>DELETE</button>
     </section>
   )
 }

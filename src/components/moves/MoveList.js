@@ -5,7 +5,7 @@ import { MoveCard } from "./MoveCard"
 import "./Move.css"
 
 export const MoveList = () => {
-  // This state changes when `getAnimals()` is invoked below
+  // This state changes when `getMoves()` is invoked below
   const { moves, getMoves } = useContext(MoveContext)
 
   const history = useHistory()

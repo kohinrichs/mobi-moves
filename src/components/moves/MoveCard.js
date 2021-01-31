@@ -14,7 +14,7 @@ const history = useHistory()
                 history.push(`/moves/detail/${move.id}`)
             }}>Details</button>
             {/* <button onClick={() => {
-                history.push(`/moves/detai/${move.id}`)
+                history.push(`/moves/detail/${move.id}`)
             }}>Add to Workout</button> */}
         </section>
     )
