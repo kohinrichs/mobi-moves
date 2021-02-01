@@ -11,18 +11,21 @@
 // database as new objects in the moveCombos
 
 import React, { useContext, useEffect, useState } from "react"
+import { useHistory } from 'react-router-dom';
 import { IntervalContext } from "../extras/IntervalProvider"
 import { SetContext } from "../extras/SetProvider"
 import { WorkoutContext } from "../workouts/WorkoutProvider"
 import { MoveCombinationContext } from "../extras/MoveCombinationProvider"
+import { MoveContext } from "./MoveProvider"
 import "./Move.css"
-import { useHistory } from 'react-router-dom';
+
 
 export const BuildAWorkoutForm = () => {
     const { addMoveCombination } = useContext(MoveCombinationContext)
     const { addWorkout } = useContext(WorkoutContext)
     const { interval, getInterval } = useContext(IntervalContext)
     const { set, getSet } = useContext(SetContext)
+    const { moves, getMoves} = useContext(MoveContext)
 
     /*
     With React, we do not target the DOM with `document.querySelector()`. Instead, our return (render) reacts to state or props.
@@ -39,7 +42,7 @@ export const BuildAWorkoutForm = () => {
 
     const [moveCombinations, setMoveCombinations] = useState({
         moveId: 0,
-        workoutId: 0,
+        workoutId: parseInt(workout.id),
         positionInWorkout: 0,
         id: 0
       });
@@ -53,6 +56,7 @@ export const BuildAWorkoutForm = () => {
     useEffect(() => {
       getInterval()
       .then(getSet)
+      .then(getMoves)
     }, [])
 
     //when a field changes, update state. The return will re-render and display based on the values in state
@@ -62,6 +66,7 @@ export const BuildAWorkoutForm = () => {
       always create a copy, make changes, and then set state.*/
       const newWorkout = { ...workout }
       const newMoveCombinations = { ...moveCombinations }
+
       let selectedVal = event.target.value
       // forms always provide values as strings. But we want to save the ids as numbers. This will cover both customer and location ids
       if (event.target.id.includes("Id")) {
@@ -71,10 +76,16 @@ export const BuildAWorkoutForm = () => {
       Set the property to the new value
       using object bracket notation. */
       newWorkout[event.target.id] = selectedVal
-      newMoveCombinations[event.target.id] = selectedVal
+
+      // Need to add some sort of logic so that the save function isn't adding new key/value pairs on to move/combos
+      
+      if (event.target.id !== "name" && event.target.id !== "intervalId" && event.target.id !== "setId") {
+        newMoveCombinations[event.target.id] = selectedVal
+      }
 
       // update state
-      setWorkout(newWorkout);
+      setWorkout(newWorkout)
+      // need to set the workout state again with the new update?
       setMoveCombinations(newMoveCombinations)
     }
 
@@ -84,19 +95,39 @@ export const BuildAWorkoutForm = () => {
       const intervalId = workout.intervalId
       const setId = workout.setId
 
+      const movesId = moveCombinations.movesId
+
       if (intervalId === 0 || setId === 0) {
         window.alert("Please select an interval and number of sets")
       } else {
         //invoke addMove passing move as an argument.
         //once complete, change the url and display the move list
+        debugger
+
+        // After saving, filter through all the moves combinations with an Id of 0 and save them with the most recent saved workout.
+
         addWorkout(workout)
-        addMoveCombination(moveCombinations)
+        .then(setWorkout(workout))
+        .then(moveCombinations.workoutId = workout.id)
+        .then(setMoveCombinations(moveCombinations))
+        .then(addMoveCombination(moveCombinations))
+            // Need to update move combinations somewhere in here with the workoutId, reassign the value?
+        // .then(moveCombinations => 
+        //     {addMoveCombination(moveCombinations)})
         .then(() => history.push("/workouts"))
+
+        console.log("moveCombos", moveCombinations)
       }
     }
 
-    console.log("interval", interval)
-    console.log("set", set)
+    // This is erasing the rest of the new combo object and replacing it with justthe Id
+    // addWorkout(workout)
+    // .then(setWorkout(workout))
+    // .then(moveCombinations.workoutId = workout.id)
+    //     // Need to update move combinations somewhere in here with the workoutId, reassign the value?
+    // .then(moveCombinations => 
+    //     {addMoveCombination(moveCombinations)})
+    // .then(() => history.push("/workouts"))
 
     return (
       <form className="buildAWorkoutForm">
@@ -131,6 +162,12 @@ export const BuildAWorkoutForm = () => {
                           </option>
                       ))}
                   </select>
+              </div>
+          </fieldset>
+          <fieldset>
+              <div className="form-group">
+                  <label htmlFor="name">Excercise:</label>
+                  <input type="text" id="moveId" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Add A Move" value={moves.id}/>
               </div>
           </fieldset>
           <button className="btn btn-primary"
