@@ -14,8 +14,10 @@ const history = useHistory()
                 history.push(`/moves/detail/${move.id}`)
             }}>Details</button>
             
+        
             {/* <button onClick={() => {
-                //Click Event that does something put doesnt push
+                //Click Event that does something put doesnt push, On click, 
+                add move, if the move slot is empty, add the move to the move list inside the BUILF A WORKOUT FORM
                 history.push(`/moves/detail/${move.id}`)
             }}>Add to Workout</button> */}
         </section>

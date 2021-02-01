@@ -46,15 +46,17 @@ export const ApplicationViews = () => {
 
 
             <WorkoutProvider>
-                <MoveCombinationProvider>
-                    <IntervalProvider>
-                        <SetProvider>
-                            <Route exact path="/moves">
-                                <BuildAWorkoutForm />
-                            </Route>
-                        </SetProvider>
-                    </IntervalProvider>
-                </MoveCombinationProvider>
+                <MoveProvider>
+                    <MoveCombinationProvider>
+                        <IntervalProvider>
+                            <SetProvider>
+                                <Route exact path="/moves">
+                                    <BuildAWorkoutForm />
+                                </Route>
+                            </SetProvider>
+                        </IntervalProvider>
+                    </MoveCombinationProvider>
+                </MoveProvider>
             </WorkoutProvider>
             
 
