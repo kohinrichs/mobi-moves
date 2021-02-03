@@ -12,7 +12,7 @@ const history = useHistory()
             <h3 className="workout__name">{workout.name}</h3>
             <button onClick={() => {
                 history.push(`/workouts/view/${workout.id}`)
-            }}>Details</button>
+            }}>View Workout</button>
         </section>
     )
 }

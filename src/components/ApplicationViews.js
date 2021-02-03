@@ -34,6 +34,13 @@ export const ApplicationViews = () => {
 
             {/* Render the excercise library when http://localhost:3000/moves */}
 
+            <MoveProvider>
+                <Route path="/moves/detail/:moveId(\d+)">
+                    <MoveDetail />
+                </Route>
+            </MoveProvider>
+
+
             <WorkoutProvider>
                 <MoveProvider>
                     <MoveCombinationProvider>
