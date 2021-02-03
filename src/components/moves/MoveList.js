@@ -19,12 +19,11 @@ export const MoveList = () => {
     getMoves()
   }, [])
 
-  // Need to return something from MoveCard to Give to Build A Workout Form to add moves to
-  // workout 
+  // Need to return something from MoveCard to Give to Build A Workout Form to add moves to workout 
 
-// const MoveForForm = (moveId) => {
-//         console.log(moveId)
-//     }
+ const MoveForForm = (move) => {
+        console.log("This Works", move)
+    }
   
     return (
         <>
@@ -37,14 +36,10 @@ export const MoveList = () => {
             <div className="moves">
                 {
                     filteredArray.map(move => {
-                        return <MoveCard key={move.id} move={move} />
+                        return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
                     })
                 }
             </div>
-
-            {/* <div className="movedId">
-                <MoveCard handleClick={()=> MoveForForm(moveId)} />
-            </div> */}
 
             <div className="buildAWorkoutForm">
                 <BuildAWorkoutForm />
@@ -52,33 +47,3 @@ export const MoveList = () => {
         </>
     )
 }
-
-// handleClick={MoveForForm(`${move.id}`)}
-
-// need to pass moveCard function that updates here
-// newMoveForWorkout(e.target.value)
-// this.newMoveForWorkout = this.newMoveForWorkout.bind(this);
-// AddToWorkout = {this.newMoveForWorkout}
-// const onclick = (data) => {
-    //     setValue(data)
-    //     console.log("Form>", data)
-    // }
-
-// const MoveForForm = () => {
-//     const [move, setNewMoveId] = useState();
-//  const handleClick = (newAddedMove) => {
-//      setNewMoveId(newAddedMove)
-//  }
-//  return <MoveCard value={move.id} onChange={handleClick}/>
-// }
-
-
-// let MoveForForm = (moveId) => {
-//         console.log(moveId)
-//         return <MoveCard key={MoveForForm.id} MoveForForm={MoveForForm} />
-//     };
-
-
-//     return <MoveCard value={value} onChange={handleClick}/>
-
-//     return (<MoveCard callbackFromParent={this.myCallback/>)
