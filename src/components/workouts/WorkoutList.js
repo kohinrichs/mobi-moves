@@ -23,7 +23,7 @@ export const WorkoutList = () => {
         <>
             <h1>Workout Library</h1>
 
-            <button onClick={() => {history.push("/workouts/create")}}>
+            <button onClick={() => {history.push("/moves")}}>
                 Build A Workout
             </button>
 

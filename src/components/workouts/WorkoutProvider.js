@@ -26,8 +26,12 @@ export const WorkoutProvider = (props) => {
             },
             body: JSON.stringify(workout)
         })
-        .then(response => response.json())
-        .then(getWorkouts)
+        .then((newWorkout) => newWorkout.json())
+        .then(workout => {
+            console.log(workout)
+            getWorkoutById()
+            return workout
+        })
     }
 
     const deleteWorkout = workoutId => {
