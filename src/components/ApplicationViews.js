@@ -10,7 +10,6 @@ import { MoveForm } from "./moves/MoveForm"
 import { EquipmentProvider } from "./extras/EquipmentProvider"
 import { MuscleGroupProvider } from "./extras/MuscleGroupProvider"
 import { MoveCombinationProvider } from "./extras/MoveCombinationProvider"
-import { BuildAWorkoutForm } from "./moves/BuildAWorkoutForm"
 import { IntervalProvider } from "./extras/IntervalProvider"
 import { SetProvider } from "./extras/SetProvider"
 
@@ -34,11 +33,8 @@ export const ApplicationViews = () => {
             </WorkoutProvider>
 
             {/* Render the excercise library when http://localhost:3000/moves */}
-            <MoveProvider>
-                <Route exact path="/moves">
-                    <MoveList />
-                </Route>
 
+            <MoveProvider>
                 <Route path="/moves/detail/:moveId(\d+)">
                     <MoveDetail />
                 </Route>
@@ -51,7 +47,7 @@ export const ApplicationViews = () => {
                         <IntervalProvider>
                             <SetProvider>
                                 <Route exact path="/moves">
-                                    <BuildAWorkoutForm />
+                                    <MoveList />
                                 </Route>
                             </SetProvider>
                         </IntervalProvider>

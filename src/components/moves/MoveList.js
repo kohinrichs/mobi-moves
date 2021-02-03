@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { MoveContext } from "./MoveProvider"
 import { MoveCard } from "./MoveCard"
+import { BuildAWorkoutForm } from "./BuildAWorkoutForm"
 import "./Move.css"
 
 export const MoveList = () => {
@@ -32,6 +33,10 @@ export const MoveList = () => {
                         return <MoveCard key={move.id} move={move} />
                     })
                 }
+            </div>
+
+            <div className="buildAWorkoutForm">
+                <BuildAWorkoutForm />
             </div>
         </>
     )

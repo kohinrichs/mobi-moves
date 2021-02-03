@@ -27,6 +27,9 @@ export const BuildAWorkoutForm = () => {
     const { set, getSet } = useContext(SetContext)
     const { moves, getMoves} = useContext(MoveContext)
 
+    const currentUserId = (parseInt(localStorage.getItem("mobi_user")))
+    const filteredMovesArray = moves.filter(m => m.userId === currentUserId)
+
     /*
     With React, we do not target the DOM with `document.querySelector()`. Instead, our return (render) reacts to state or props.
     Define the intial state of the form inputs with useState()
@@ -75,7 +78,9 @@ export const BuildAWorkoutForm = () => {
       /* Move is an object with properties.
       Set the property to the new value
       using object bracket notation. */
-      newWorkout[event.target.id] = selectedVal
+      if (event.target.id !== "moveId") {
+        newWorkout[event.target.id] = selectedVal
+      }
 
       // Need to add some sort of logic so that the save function isn't adding new key/value pairs on to move/combos
       
@@ -89,45 +94,37 @@ export const BuildAWorkoutForm = () => {
       setMoveCombinations(newMoveCombinations)
     }
 
-    const handleClickSaveMove = (event) => {
+    const handleClickSaveWorkout = (event) => {
       event.preventDefault() //Prevents the browser from submitting the form
 
-      const intervalId = workout.intervalId
-      const setId = workout.setId
+        const intervalId = workout.intervalId
+        const setId = workout.setId
+        const movesId = moveCombinations.movesId
+  
+        if (intervalId === 0 || setId === 0 || movesId === 0) {
+          window.alert("Please select an interval and number of sets")
+        } else {
 
-      const movesId = moveCombinations.movesId
-
-      if (intervalId === 0 || setId === 0) {
-        window.alert("Please select an interval and number of sets")
-      } else {
-        //invoke addMove passing move as an argument.
-        //once complete, change the url and display the move list
-        debugger
-
-        // After saving, filter through all the moves combinations with an Id of 0 and save them with the most recent saved workout.
-
-        addWorkout(workout)
-        .then(setWorkout(workout))
-        .then(moveCombinations.workoutId = workout.id)
-        .then(setMoveCombinations(moveCombinations))
-        .then(addMoveCombination(moveCombinations))
-            // Need to update move combinations somewhere in here with the workoutId, reassign the value?
-        // .then(moveCombinations => 
-        //     {addMoveCombination(moveCombinations)})
-        .then(() => history.push("/workouts"))
-
-        console.log("moveCombos", moveCombinations)
-      }
+          addWorkout({
+            name: workout.name,
+            intervalId: workout.intervalId,
+            setId: workout.setId,
+            userId: parseInt(localStorage.getItem("mobi_user")),
+          })
+      
+      /// NEED TO LOOP THROUGH ALL THE EXCERCISES ON THE FORM
+      
+            .then((newWorkout)=>{
+              console.log(newWorkout)
+                            addMoveCombination({
+                        moveId: moveCombinations.moveId,
+                        workoutId:newWorkout.id,
+                        positionInWorkoutId: 0
+                      })
+            })
+            .then(history.push("/workouts"))
+        }
     }
-
-    // This is erasing the rest of the new combo object and replacing it with justthe Id
-    // addWorkout(workout)
-    // .then(setWorkout(workout))
-    // .then(moveCombinations.workoutId = workout.id)
-    //     // Need to update move combinations somewhere in here with the workoutId, reassign the value?
-    // .then(moveCombinations => 
-    //     {addMoveCombination(moveCombinations)})
-    // .then(() => history.push("/workouts"))
 
     return (
       <form className="buildAWorkoutForm">
@@ -166,12 +163,32 @@ export const BuildAWorkoutForm = () => {
           </fieldset>
           <fieldset>
               <div className="form-group">
-                  <label htmlFor="name">Excercise:</label>
-                  <input type="text" id="moveId" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Add A Move" value={moves.id}/>
+                  <label htmlFor="setId">Choose an excercise: </label>
+                  <select defaultValue={moveCombinations.moveId} name="moveId" id="moveId" onChange={handleControlledInputChange} className="form-control" >
+                      <option value="0">Select a move</option>
+                      {filteredMovesArray.map(move => (
+                          <option key={move.id} value={move.id}>
+                              {move.name}
+                          </option>
+                      ))}
+                  </select>
+              </div>
+          </fieldset>
+          <fieldset>
+              <div className="form-group">
+                  <label htmlFor="setId">Choose an excercise: </label>
+                  <select defaultValue={moveCombinations.moveId} name="moveId" id="moveId" onChange={handleControlledInputChange} className="form-control" >
+                      <option value="0">Select a move</option>
+                      {filteredMovesArray.map(move => (
+                          <option key={move.id} value={move.id}>
+                              {move.name}
+                          </option>
+                      ))}
+                  </select>
               </div>
           </fieldset>
           <button className="btn btn-primary"
-            onClick={handleClickSaveMove}>
+            onClick={handleClickSaveWorkout}>
             Save
           </button>
       </form>
