@@ -22,10 +22,9 @@ export const MoveList = () => {
   // Need to return something from MoveCard to Give to Build A Workout Form to add moves to
   // workout 
 
-  let MoveForForm = (moveId) => {
-    console.log(moveId)
-    return <MoveCard key={MoveForForm.id} MoveForForm={MoveForForm} />
-}
+// const MoveForForm = (moveId) => {
+//         console.log(moveId)
+//     }
   
     return (
         <>
@@ -43,12 +42,18 @@ export const MoveList = () => {
                 }
             </div>
 
+            {/* <div className="movedId">
+                <MoveCard handleClick={()=> MoveForForm(moveId)} />
+            </div> */}
+
             <div className="buildAWorkoutForm">
                 <BuildAWorkoutForm />
             </div>
         </>
     )
 }
+
+// handleClick={MoveForForm(`${move.id}`)}
 
 // need to pass moveCard function that updates here
 // newMoveForWorkout(e.target.value)

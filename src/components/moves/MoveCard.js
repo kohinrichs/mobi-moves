@@ -2,14 +2,14 @@ import React from "react"
 import { useHistory } from "react-router-dom"
 import "./Move.css"
 
-export const MoveCard = ({ move }, { MoveForForm }) => {
+export const MoveCard = ({ move }) => {
 
 const history = useHistory()
 
- const handleClick = (event) => {
-     debugger
-     MoveForForm(event.target.value)
-}
+//  const handleClick = (event) => {
+//      debugger
+//      MoveForForm(event.target.value)
+// }
 
     return (
         <section className="move">
@@ -18,7 +18,7 @@ const history = useHistory()
                 history.push(`/moves/detail/${move.id}`)
             }}>Details</button>
 
-             <button value={`${move.id}`} onClick={handleClick}>Add to Workout</button>
+             <button value={`${move.id}`} onClick={() => this.handleClick(`${move.id}`)}>Add to Workout</button>
 
         </section>
     )
