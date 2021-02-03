@@ -194,10 +194,8 @@ export const BuildAWorkoutForm = () => {
                   </select>
               </div>
           </fieldset>
-          {/* <fieldset>
+          <fieldset>
               <div className="form-group">
-                  <label htmlFor="movesId">Excercise:</label>
-                  <input type="text" id="moveId" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Add A Move" value={parseInt(sessionStorage.getItem("moveId"))}/>
                   <label htmlFor="setId">Choose an excercise: </label>
                   <select defaultValue={moveCombinations.moveId} name="moveId" id="moveId" onChange={handleControlledInputChange} className="form-control" >
                       <option value="0">Select a move</option>
@@ -209,8 +207,10 @@ export const BuildAWorkoutForm = () => {
                   </select>
               </div>
           </fieldset>
-          <fieldset>
+          {/* <fieldset>
               <div className="form-group">
+                  <label htmlFor="movesId">Excercise:</label>
+                  <input type="text" id="moveId" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Add A Move" value={parseInt(sessionStorage.getItem("moveId"))}/>
                   <label htmlFor="setId">Choose an excercise: </label>
                   <select defaultValue={moveCombinations.moveId} name="moveId" id="moveId" onChange={handleControlledInputChange} className="form-control" >
                       <option value="0">Select a move</option>
