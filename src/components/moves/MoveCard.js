@@ -2,10 +2,14 @@ import React from "react"
 import { useHistory } from "react-router-dom"
 import "./Move.css"
 
+export const MoveCard = ({ move }, { MoveForForm }) => {
 
-export const MoveCard = ({ move }) => {
-    
 const history = useHistory()
+
+ const handleClick = (event) => {
+     debugger
+     MoveForForm(event.target.value)
+}
 
     return (
         <section className="move">
@@ -13,13 +17,20 @@ const history = useHistory()
             <button onClick={() => {
                 history.push(`/moves/detail/${move.id}`)
             }}>Details</button>
-            
-        
-            {/* <button onClick={() => {
-                //Click Event that does something put doesnt push, On click, 
-                add move, if the move slot is empty, add the move to the move list inside the BUILF A WORKOUT FORM
-                history.push(`/moves/detail/${move.id}`)
-            }}>Add to Workout</button> */}
+
+             <button value={`${move.id}`} onClick={handleClick}>Add to Workout</button>
+
         </section>
     )
 }
+
+// class MoveCard extends React.Component {
+
+//     someFn = () => {
+//         let ListInfo = 
+//         this.props.callbackFromParent(listInfo);
+//         },
+//         render () {
+//             [...]
+//         }
+// }

@@ -17,6 +17,7 @@ import { SetContext } from "../extras/SetProvider"
 import { WorkoutContext } from "../workouts/WorkoutProvider"
 import { MoveCombinationContext } from "../extras/MoveCombinationProvider"
 import { MoveContext } from "./MoveProvider"
+import { MoveCard } from "./MoveCard"
 import "./Move.css"
 
 
@@ -47,11 +48,17 @@ export const BuildAWorkoutForm = () => {
         id: 0
       });
 
+    // const [newMove, setNewMove] = useState({
+    //     moveId: parseInt(sessionStorage.getItem("moveId"))
+    // })
+
+    // console.log("newMove", newMove)
+
     const history = useHistory();
 
     /*
-    Reach out to the world and get customers state
-    and locations state on initialization, so we can provide their data in the form dropdowns
+    Reach out to the world and get interval state
+    and sets state on initialization, so we can provide their data in the form dropdowns
     */
     useEffect(() => {
       getInterval()
@@ -59,22 +66,47 @@ export const BuildAWorkoutForm = () => {
       .then(getMoves)
     }, [])
 
+    //-----------------------
+    // get the moveId from sessionstorage and add it to an array 
+    // let moveIdArray = []
+
+
+    // StorageEvent.initStorageEvent(DOMstring [newValue], () => {
+    //     debugger
+    //    if (newMove.moveId !== parseInt(sessionStorage.getItem("moveId")))
+    //         setNewMove()
+    //     });
+        
+        document.addEventListener('onClick', (e) => {
+                console.log(e.value)
+            });
+        
+
+    //----------------------------
+   
+
     //when a field changes, update state. The return will re-render and display based on the values in state
     //Controlled component
+
     const handleControlledInputChange = (event) => {
+
       /* When changing a state object or array,
       always create a copy, make changes, and then set state.*/
+
       const newWorkout = { ...workout }
       const newMoveCombinations = { ...moveCombinations }
 
       let selectedVal = event.target.value
+
       // forms always provide values as strings. But we want to save the ids as numbers. This will cover both customer and location ids
+      
       if (event.target.id.includes("Id")) {
         selectedVal = parseInt(selectedVal)
       }
-      /* Move is an object with properties.
-      Set the property to the new value
-      using object bracket notation. */
+      
+      /* Workout and MoveCombinations are objects with properties.
+      Set the property to the new value using object bracket notation. */
+
       newWorkout[event.target.id] = selectedVal
 
       // Need to add some sort of logic so that the save function isn't adding new key/value pairs on to move/combos
@@ -84,25 +116,27 @@ export const BuildAWorkoutForm = () => {
       }
 
       // update state
+
       setWorkout(newWorkout)
-      // need to set the workout state again with the new update?
+
+      // TO DO? - need to set the workout state again with the new update?
       setMoveCombinations(newMoveCombinations)
     }
 
     const handleClickSaveMove = (event) => {
-      event.preventDefault() //Prevents the browser from submitting the form
+      
+    event.preventDefault() //Prevents the browser from submitting the form
 
       const intervalId = workout.intervalId
       const setId = workout.setId
 
-      const movesId = moveCombinations.movesId
+      // ------ This is where I was trying to get the window alert to work
 
       if (intervalId === 0 || setId === 0) {
         window.alert("Please select an interval and number of sets")
       } else {
         //invoke addMove passing move as an argument.
         //once complete, change the url and display the move list
-        debugger
 
         // After saving, filter through all the moves combinations with an Id of 0 and save them with the most recent saved workout.
 
@@ -111,23 +145,11 @@ export const BuildAWorkoutForm = () => {
         .then(moveCombinations.workoutId = workout.id)
         .then(setMoveCombinations(moveCombinations))
         .then(addMoveCombination(moveCombinations))
-            // Need to update move combinations somewhere in here with the workoutId, reassign the value?
-        // .then(moveCombinations => 
-        //     {addMoveCombination(moveCombinations)})
         .then(() => history.push("/workouts"))
 
         console.log("moveCombos", moveCombinations)
       }
     }
-
-    // This is erasing the rest of the new combo object and replacing it with justthe Id
-    // addWorkout(workout)
-    // .then(setWorkout(workout))
-    // .then(moveCombinations.workoutId = workout.id)
-    //     // Need to update move combinations somewhere in here with the workoutId, reassign the value?
-    // .then(moveCombinations => 
-    //     {addMoveCombination(moveCombinations)})
-    // .then(() => history.push("/workouts"))
 
     return (
       <form className="buildAWorkoutForm">
@@ -164,12 +186,24 @@ export const BuildAWorkoutForm = () => {
                   </select>
               </div>
           </fieldset>
-          <fieldset>
+          {/* <fieldset>
               <div className="form-group">
-                  <label htmlFor="name">Excercise:</label>
-                  <input type="text" id="moveId" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Add A Move" value={moves.id}/>
+                  <label htmlFor="movesId">Excercise:</label>
+                  <input type="text" id="moveId" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Add A Move" value={parseInt(sessionStorage.getItem("moveId"))}/>
               </div>
-          </fieldset>
+          </fieldset> */}
+          {/* <fieldset>
+              <div className="form-group">
+                  <ul>
+                      <li>
+                          <label htmlFor="movesId">Excerise 2</label>
+                          <input type="text" id="moveId2" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Add A Move" 
+                            {...newMove.map(move => (
+                                    <li key={move.id} value="move.id">{move.name}</li>))}/>
+                      </li>
+                  </ul>
+              </div>
+          </fieldset> */}
           <button className="btn btn-primary"
             onClick={handleClickSaveMove}>
             Save
