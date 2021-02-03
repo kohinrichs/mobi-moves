@@ -17,6 +17,7 @@ import { SetContext } from "../extras/SetProvider"
 import { WorkoutContext } from "../workouts/WorkoutProvider"
 import { MoveCombinationContext } from "../extras/MoveCombinationProvider"
 import { MoveContext } from "./MoveProvider"
+import { MoveCard } from "./MoveCard"
 import "./Move.css"
 
 
@@ -50,11 +51,17 @@ export const BuildAWorkoutForm = () => {
         id: 0
       });
 
+    // const [newMove, setNewMove] = useState({
+    //     moveId: parseInt(sessionStorage.getItem("moveId"))
+    // })
+
+    // console.log("newMove", newMove)
+
     const history = useHistory();
 
     /*
-    Reach out to the world and get customers state
-    and locations state on initialization, so we can provide their data in the form dropdowns
+    Reach out to the world and get interval state
+    and sets state on initialization, so we can provide their data in the form dropdowns
     */
     useEffect(() => {
       getInterval()
@@ -62,16 +69,40 @@ export const BuildAWorkoutForm = () => {
       .then(getMoves)
     }, [])
 
+    //-----------------------
+    // get the moveId from sessionstorage and add it to an array 
+    // let moveIdArray = []
+
+
+    // StorageEvent.initStorageEvent(DOMstring [newValue], () => {
+    //     debugger
+    //    if (newMove.moveId !== parseInt(sessionStorage.getItem("moveId")))
+    //         setNewMove()
+    //     });
+        
+        document.addEventListener('onClick', (e) => {
+                console.log(e.value)
+            });
+        
+
+    //----------------------------
+   
+
     //when a field changes, update state. The return will re-render and display based on the values in state
     //Controlled component
+
     const handleControlledInputChange = (event) => {
+
       /* When changing a state object or array,
       always create a copy, make changes, and then set state.*/
+
       const newWorkout = { ...workout }
       const newMoveCombinations = { ...moveCombinations }
 
       let selectedVal = event.target.value
+
       // forms always provide values as strings. But we want to save the ids as numbers. This will cover both customer and location ids
+      
       if (event.target.id.includes("Id")) {
         selectedVal = parseInt(selectedVal)
       }
@@ -89,8 +120,10 @@ export const BuildAWorkoutForm = () => {
       }
 
       // update state
+
       setWorkout(newWorkout)
-      // need to set the workout state again with the new update?
+
+      // TO DO? - need to set the workout state again with the new update?
       setMoveCombinations(newMoveCombinations)
     }
 
@@ -174,8 +207,10 @@ export const BuildAWorkoutForm = () => {
                   </select>
               </div>
           </fieldset>
-          <fieldset>
+          {/* <fieldset>
               <div className="form-group">
+                  <label htmlFor="movesId">Excercise:</label>
+                  <input type="text" id="moveId" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Add A Move" value={parseInt(sessionStorage.getItem("moveId"))}/>
                   <label htmlFor="setId">Choose an excercise: </label>
                   <select defaultValue={moveCombinations.moveId} name="moveId" id="moveId" onChange={handleControlledInputChange} className="form-control" >
                       <option value="0">Select a move</option>
@@ -186,7 +221,19 @@ export const BuildAWorkoutForm = () => {
                       ))}
                   </select>
               </div>
-          </fieldset>
+          </fieldset> */}
+          {/* <fieldset>
+              <div className="form-group">
+                  <ul>
+                      <li>
+                          <label htmlFor="movesId">Excerise 2</label>
+                          <input type="text" id="moveId2" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Add A Move" 
+                            {...newMove.map(move => (
+                                    <li key={move.id} value="move.id">{move.name}</li>))}/>
+                      </li>
+                  </ul>
+              </div>
+          </fieldset> */}
           <button className="btn btn-primary"
             onClick={handleClickSaveWorkout}>
             Save
