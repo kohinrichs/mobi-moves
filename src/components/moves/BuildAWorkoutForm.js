@@ -17,11 +17,10 @@ import { SetContext } from "../extras/SetProvider"
 import { WorkoutContext } from "../workouts/WorkoutProvider"
 import { MoveCombinationContext } from "../extras/MoveCombinationProvider"
 import { MoveContext } from "./MoveProvider"
-import { MoveCard } from "./MoveCard"
 import "./Move.css"
 
 
-export const BuildAWorkoutForm = () => {
+export const BuildAWorkoutForm = ({ newArrayOfMoves }) => {
     const { addMoveCombination } = useContext(MoveCombinationContext)
     const { addWorkout } = useContext(WorkoutContext)
     const { interval, getInterval } = useContext(IntervalContext)
@@ -30,6 +29,7 @@ export const BuildAWorkoutForm = () => {
 
     const currentUserId = (parseInt(localStorage.getItem("mobi_user")))
     const filteredMovesArray = moves.filter(m => m.userId === currentUserId)
+    const history = useHistory();
 
     /*
     With React, we do not target the DOM with `document.querySelector()`. Instead, our return (render) reacts to state or props.
@@ -51,14 +51,15 @@ export const BuildAWorkoutForm = () => {
         id: 0
       });
 
-    // const [newMove, setNewMove] = useState({
-    //     moveId: parseInt(sessionStorage.getItem("moveId"))
-    // })
+    
+      // const [arrayOfMoves, setArrayOMoves] = useState([])
 
-    // console.log("newMove", newMove)
-
-    const history = useHistory();
-
+    const movesForWorkout = [ ...newArrayOfMoves]
+    console.log(movesForWorkout)
+   
+    
+    // const movesToUse = moveArray
+    // console.log(movesToUse)
     /*
     Reach out to the world and get interval state
     and sets state on initialization, so we can provide their data in the form dropdowns
@@ -69,25 +70,7 @@ export const BuildAWorkoutForm = () => {
       .then(getMoves)
     }, [])
 
-    //-----------------------
-    // get the moveId from sessionstorage and add it to an array 
-    // let moveIdArray = []
-
-
-    // StorageEvent.initStorageEvent(DOMstring [newValue], () => {
-    //     debugger
-    //    if (newMove.moveId !== parseInt(sessionStorage.getItem("moveId")))
-    //         setNewMove()
-    //     });
-        
-        document.addEventListener('onClick', (e) => {
-                console.log(e.value)
-            });
-        
-
-    //----------------------------
    
-
     //when a field changes, update state. The return will re-render and display based on the values in state
     //Controlled component
 
@@ -160,8 +143,9 @@ export const BuildAWorkoutForm = () => {
     }
 
     return (
-      <form className="buildAWorkoutForm">
-          <h2 className="moveForm__title">Build A Workout</h2>
+    <div className="buildAWorkoutForm">
+      <form className="workoutForm">
+          <h2 className="workoutForm__title">Build A Workout</h2>
           <fieldset>
               <div className="form-group">
                   <label htmlFor="name">Workout Name:</label>
@@ -194,7 +178,12 @@ export const BuildAWorkoutForm = () => {
                   </select>
               </div>
           </fieldset>
-          <fieldset>
+                <ul className="list-group">
+                    {movesForWorkout.map(move => (
+                        <li className="move" id="moveId">{move.name}</li>
+                    ))}
+                </ul>
+          {/* <fieldset>
               <div className="form-group">
                   <label htmlFor="setId">Choose an excercise: </label>
                   <select defaultValue={moveCombinations.moveId} name="moveId" id="moveId" onChange={handleControlledInputChange} className="form-control" >
@@ -206,7 +195,7 @@ export const BuildAWorkoutForm = () => {
                       ))}
                   </select>
               </div>
-          </fieldset>
+          </fieldset> */}
           {/* <fieldset>
               <div className="form-group">
                   <label htmlFor="movesId">Excercise:</label>
@@ -234,10 +223,18 @@ export const BuildAWorkoutForm = () => {
                   </ul>
               </div>
           </fieldset> */}
-          <button className="btn btn-primary"
+          {/* <button className="btn btn-primary"
+            onClick={handleClickSaveWorkout}>
+            Save
+          </button> */}
+      </form>
+      {/* <ul className="list-group">
+              <li className="move" id="moveId">3</li>
+          </ul> */}
+      <button className="btn btn-primary"
             onClick={handleClickSaveWorkout}>
             Save
           </button>
-      </form>
+      </div>
     )
 }
