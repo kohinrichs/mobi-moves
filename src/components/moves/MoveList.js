@@ -14,16 +14,37 @@ export const MoveList = () => {
   const currentUserId = (parseInt(localStorage.getItem("mobi_user")))
   const filteredArray = moves.filter(m => m.userId === currentUserId)
 
+  const [arrayOfMoves, setArrayOfMoves] = useState([])
+
   //useEffect - reach out to the world for something // could maybe filter the moves in the useEffect as well
   useEffect(() => {
     getMoves()
   }, [])
 
   // Need to return something from MoveCard to Give to Build A Workout Form to add moves to workout 
+ // Will need to clear the state when the form is submitted
+ // Need to take updated state from MoveList and send it to Build a Workout Form as a prop to rerender the list when there 
+ // has been an update to the state of newArrayOfMoves
+  
+    let newArrayOfMoves = [ ...arrayOfMoves ]
+    console.log("Test", newArrayOfMoves) 
 
  const MoveForForm = (move) => {
+        
+    //  newArrayOfMoves = [ ...arrayOfMoves ]
+        
         console.log("This Works", move)
+        
+        newArrayOfMoves.push(move)
+        setArrayOfMoves(newArrayOfMoves)
+
+        console.log(newArrayOfMoves)
+        return newArrayOfMoves
+        
+        
+        
     }
+
   
     return (
         <>
@@ -42,7 +63,9 @@ export const MoveList = () => {
             </div>
 
             <div className="buildAWorkoutForm">
-                <BuildAWorkoutForm />
+            {
+                <BuildAWorkoutForm newArrayOfMoves={newArrayOfMoves}/>
+            }
             </div>
         </>
     )
