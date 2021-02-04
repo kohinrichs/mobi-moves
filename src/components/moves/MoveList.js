@@ -31,18 +31,12 @@ export const MoveList = () => {
 
  const MoveForForm = (move) => {
         
-    //  newArrayOfMoves = [ ...arrayOfMoves ]
-        
         console.log("This Works", move)
         
         newArrayOfMoves.push(move)
         setArrayOfMoves(newArrayOfMoves)
 
-        console.log(newArrayOfMoves)
-        return newArrayOfMoves
-        
-        
-        
+        console.log(newArrayOfMoves)    
     }
 
   
@@ -64,7 +58,7 @@ export const MoveList = () => {
 
             <div className="buildAWorkoutForm">
             {
-                <BuildAWorkoutForm newArrayOfMoves={newArrayOfMoves}/>
+                <BuildAWorkoutForm key={newArrayOfMoves.id} newArrayOfMoves={newArrayOfMoves}/>
             }
             </div>
         </>
