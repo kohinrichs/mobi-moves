@@ -29,7 +29,7 @@ export const WorkoutProvider = (props) => {
         .then((newWorkout) => newWorkout.json())
         .then(workout => {
             console.log(workout)
-            getWorkoutById()
+            getWorkouts()
             return workout
         })
     }
