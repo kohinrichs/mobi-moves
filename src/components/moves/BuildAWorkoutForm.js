@@ -16,7 +16,7 @@ export const BuildAWorkoutForm = ({ newArrayOfMoves }) => {
     const { addWorkout } = useContext(WorkoutContext)
     const { interval, getInterval } = useContext(IntervalContext)
     const { set, getSet } = useContext(SetContext)
-    const { moves, getMoves } = useContext(MoveContext)
+    const { getMoves } = useContext(MoveContext)
 
     const history = useHistory();
 
@@ -40,9 +40,6 @@ export const BuildAWorkoutForm = ({ newArrayOfMoves }) => {
     const movesForWorkout = [...newArrayOfMoves]
     console.log("moves for workout", movesForWorkout)
 
-    // let newMoveCombinations = { ...moveCombinations }
-    // let arrayOfNewMoveCombinations = []
-
     /*
     Reach out to the world and get interval state
     and sets state on initialization, so we can provide their data in the form dropdowns
@@ -55,7 +52,6 @@ export const BuildAWorkoutForm = ({ newArrayOfMoves }) => {
 
 
     //when a field changes, update state. The return will re-render and display based on the values in state
-    //Controlled component
 
     const handleControlledInputChange = (event) => {
 
@@ -79,35 +75,6 @@ export const BuildAWorkoutForm = ({ newArrayOfMoves }) => {
 
          // update state
          setWorkout(newWorkout)
-
-        //Managing state of moveCombinations > updating as a new move is added to the list
-        // When a new object is add to the movesForWorkout array -  Need to map through the array 
-        // to use the moveId from all the moves to add as the move Id 
-        // to an array of newMoveCombination objects
-
-        // movesForWorkout.map(move => {
-        //     let newMove = {
-        //         moveId: move,
-        //         workoutId: 0,
-        //         positionInWorkout: 0,
-        //         id: 0
-        //     }
-        //     newMoveCombinations.push(newMove)
-        // })
-        
-        // console.log("are moves adding", setMoveCombinations(newMoveCombinations))
-        
-
-        // If a new move is added to the movesForWorkout Array, make a new object and update the sate of 
-        // newMoveCombinations
-
-        // newMoveCombinations = movesForWorkout.map(move => {
-        //     newMoveCombination.moveId = move.id })
-
-    
-
-        //   // TO DO? - need to set the workout state again with the new update?
-        //   setMoveCombinations(newMoveCombinations)
     }
 
     // When the save button is clicked, need to take all of the ids from the objects in moves for workout,
@@ -145,6 +112,7 @@ export const BuildAWorkoutForm = ({ newArrayOfMoves }) => {
         // Here we are taking the newWorkout object as a parameter in the annonymous .then function. Promise.all takes an array of promises 
         // and returns a promise. We're then mapping over the newMoveCombinations array and feeding one obeject from it at a time into addMoveCombination
         //(which is what is creating all the promises). Within addMoveCombination, we're creating a copy of move and adding te workoutId to it.
+        
         .then((newWorkout) => Promise.all(newMoveCombinations.map(move => addMoveCombination({...move, workoutId: newWorkout.id}))))
         .then(()=> history.push("/workouts"))
         }
