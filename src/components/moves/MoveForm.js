@@ -71,6 +71,10 @@ export const MoveForm = () => {
     }
 
     return (
+      <>
+      <button onClick={() => {
+        history.push(`/moves`)
+      }}>Back</button>
       <form className="moveForm">
           <h2 className="moveForm__title">Add A Move</h2>
           <fieldset>
@@ -116,5 +120,6 @@ export const MoveForm = () => {
             Save
           </button>
       </form>
+      </>
     )
 }
