@@ -8,7 +8,9 @@ import { SetContext } from "../extras/SetProvider"
 import { WorkoutContext } from "../workouts/WorkoutProvider"
 import { MoveCombinationContext } from "../extras/MoveCombinationProvider"
 import { MoveContext } from "./MoveProvider"
+import { EquipmentContext } from "../extras/EquipmentProvider";
 import "./Move.css"
+
 
 
 export const BuildAWorkoutForm = ({ newArrayOfMoves }) => {
@@ -17,6 +19,7 @@ export const BuildAWorkoutForm = ({ newArrayOfMoves }) => {
     const { interval, getInterval } = useContext(IntervalContext)
     const { set, getSet } = useContext(SetContext)
     const { getMoves } = useContext(MoveContext)
+    const {equipment, getEquipment } = useContext(EquipmentContext)
 
     const history = useHistory();
 
@@ -40,6 +43,19 @@ export const BuildAWorkoutForm = ({ newArrayOfMoves }) => {
     const movesForWorkout = [...newArrayOfMoves]
     console.log("moves for workout", movesForWorkout)
 
+ //----------
+
+let equipmentList = movesForWorkout.map(e => e.equipment.name)
+console.log(equipmentList)
+
+let uniqueEquipmentList = [...new Set(equipmentList)]
+console.log(uniqueEquipmentList)
+
+// let equipmentListForPrint = equipment.filter(e => uniqueEquipmentList.includes(e.id)).map(e => e.name)
+// console.log(equipmentListForPrint)
+
+//-------
+
     /*
     Reach out to the world and get interval state
     and sets state on initialization, so we can provide their data in the form dropdowns
@@ -47,7 +63,8 @@ export const BuildAWorkoutForm = ({ newArrayOfMoves }) => {
     useEffect(() => {
         getInterval()
             .then(getSet)
-            .then(getMoves)
+            .then(()=> getMoves)
+            .then(()=> getEquipment)
     }, [])
 
 
@@ -165,6 +182,13 @@ export const BuildAWorkoutForm = ({ newArrayOfMoves }) => {
                 onClick={handleClickSaveWorkout}>
                 Save
           </button>
+          <div className="workout__equipmentList">
+                <h3 className="workout__equipmentList--name">Equipment List:</h3>
+                <div>{
+                    uniqueEquipmentList.map(equipment => equipment).join(", ")
+                }
+                </div>
+            </div>
             </form>
         </div>
     )
