@@ -3,16 +3,22 @@ import { useHistory } from "react-router-dom"
 import { MoveContext } from "./MoveProvider"
 import { MoveCard } from "./MoveCard"
 import { BuildAWorkoutForm } from "./BuildAWorkoutForm"
+import { MuscleGroupContext } from "../extras/MuscleGroupProvider"
 import "./Move.css"
 
 
 export const MoveList = () => {
   // This state changes when `getMoves()` is invoked below
   const { moves, getMoves } = useContext(MoveContext)
+  const { muscleGroup, getMuscleGroup } = useContext(MuscleGroupContext)
 
   const history = useHistory()
   const currentUserId = (parseInt(localStorage.getItem("mobi_user")))
   const filteredArray = moves.filter(m => m.userId === currentUserId)
+
+  filteredArray.sort(function(a,b) {
+    return a.muscleGroupId - b.muscleGroupId
+  })
 
   const [arrayOfMoves, setArrayOfMoves] = useState([])
 
@@ -39,7 +45,8 @@ export const MoveList = () => {
         console.log(newArrayOfMoves)    
     }
 
-  
+    // let equipmentListForPrint = equipment.filter(e => uniqueEquipmentList.includes(e.id)).map(e => e.name)
+    // console.log(equipmentListForPrint)
     return (
         <>
             <h1>Excercise Library</h1>
@@ -48,18 +55,27 @@ export const MoveList = () => {
                 Add A Move
             </button>
 
-            <div className="moves">
-                {
-                    filteredArray.map(move => {
+            {/* <div className="moves">
+                {  
+                    muscleGroup.filter(mg => filteredArray.includes(mg.id)).map(move => {
                         return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
                     })
                 }
-            </div>
+            </div> */}
+            <div className="movesView">
+                <div className="moves">
+                    {
+                        filteredArray.map(move => {
+                            return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
+                        })
+                    }
+                </div>
 
-            <div className="buildAWorkoutForm">
-            {
-                <BuildAWorkoutForm key={newArrayOfMoves} newArrayOfMoves={newArrayOfMoves}/>
-            }
+                <div className="buildAWorkoutForm">
+                    {
+                        <BuildAWorkoutForm key={newArrayOfMoves} newArrayOfMoves={newArrayOfMoves} />
+                    }
+                </div>
             </div>
         </>
     )

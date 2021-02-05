@@ -41,9 +41,13 @@ export const ApplicationViews = () => {
                     <MoveCombinationProvider>
                         <IntervalProvider>
                             <SetProvider>
-                                <Route exact exact path="/moves">
-                                    <MoveList />
-                                </Route>
+                                <MuscleGroupProvider>
+                                    <EquipmentProvider>
+                                        <Route exact exact path="/moves">
+                                            <MoveList />
+                                        </Route>
+                                    </EquipmentProvider>
+                                </MuscleGroupProvider>
                             </SetProvider>
                         </IntervalProvider>
                     </MoveCombinationProvider>
