@@ -34,19 +34,12 @@ export const ApplicationViews = () => {
 
             {/* Render the excercise library when http://localhost:3000/moves */}
 
-            <MoveProvider>
-                <Route path="/moves/detail/:moveId(\d+)">
-                    <MoveDetail />
-                </Route>
-            </MoveProvider>
-
-
             <WorkoutProvider>
                 <MoveProvider>
                     <MoveCombinationProvider>
                         <IntervalProvider>
                             <SetProvider>
-                                <Route exact path="/moves">
+                                <Route exact exact path="/moves">
                                     <MoveList />
                                 </Route>
                             </SetProvider>
@@ -56,7 +49,7 @@ export const ApplicationViews = () => {
             </WorkoutProvider>
 
             <MoveProvider>
-                <Route path="/moves/detail/:moveId(\d+)">
+                <Route exact path="/moves/detail/:moveId(\d+)">
                     <MoveDetail />
                 </Route>
             </MoveProvider>
@@ -64,7 +57,7 @@ export const ApplicationViews = () => {
             <MoveProvider>
                 <EquipmentProvider>
                     <MuscleGroupProvider>
-                        <Route path="/moves/create">
+                        <Route exact path="/moves/create">
                             <MoveForm />
                         </Route>
                     </MuscleGroupProvider>

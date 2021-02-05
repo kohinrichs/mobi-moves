@@ -4,6 +4,7 @@ import "./Move.css"
 import { useParams, useHistory } from "react-router-dom"
 
 export const MoveDetail = () => {
+  
   const { getMoveById, deleteMove } = useContext(MoveContext)
 
 	const [move, setMove] = useState({})

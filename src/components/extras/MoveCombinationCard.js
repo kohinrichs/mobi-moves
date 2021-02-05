@@ -6,7 +6,7 @@ export const MoveCombinationCard = ({ mc }) => {
 
     return (
         <section className="workout_moves--move">
-            <h3 className="workout__move--name">{mc.move?.name}</h3>
+            <h3 className="workout__move--name" id={mc.positionInWorkout}>{mc.move?.name}</h3>
         </section>
     )
 }

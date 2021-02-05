@@ -72,9 +72,11 @@ export const BuildAWorkoutForm = ({ newArrayOfMoves }) => {
         if (event.target.id !== "moveId") {
             newWorkout[event.target.id] = selectedVal
         }
-
          // update state
          setWorkout(newWorkout)
+         
+         
+     
     }
 
     // When the save button is clicked, need to take all of the ids from the objects in moves for workout,
@@ -86,7 +88,7 @@ export const BuildAWorkoutForm = ({ newArrayOfMoves }) => {
 
         const intervalId = workout.intervalId
         const setId = workout.setId
-
+        let positionInWorkoutKey = 1
         movesForWorkout.map(move => {
             let newMove = {
                 moveId: move.id,
@@ -113,7 +115,7 @@ export const BuildAWorkoutForm = ({ newArrayOfMoves }) => {
         // and returns a promise. We're then mapping over the newMoveCombinations array and feeding one obeject from it at a time into addMoveCombination
         //(which is what is creating all the promises). Within addMoveCombination, we're creating a copy of move and adding te workoutId to it.
         
-        .then((newWorkout) => Promise.all(newMoveCombinations.map(move => addMoveCombination({...move, workoutId: newWorkout.id}))))
+        .then((newWorkout) => Promise.all(newMoveCombinations.map(move => addMoveCombination({...move, workoutId: newWorkout.id, positionInWorkout: positionInWorkoutKey++ }))))
         .then(()=> history.push("/workouts"))
         }
     }
@@ -159,7 +161,7 @@ export const BuildAWorkoutForm = ({ newArrayOfMoves }) => {
                         <li>{move.name}</li>
                     ))}
                 </ul>
-                <button className="btn btn-primary"
+            <button className="btn btn-primary"
                 onClick={handleClickSaveWorkout}>
                 Save
           </button>
