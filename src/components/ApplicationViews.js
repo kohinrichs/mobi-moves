@@ -26,9 +26,11 @@ export const ApplicationViews = () => {
 
             <WorkoutProvider>
                 <MoveCombinationProvider>
-                    <Route path="/workouts/view/:workoutId(\d+)">
-                        <WorkoutView />
-                    </Route>
+                    <EquipmentProvider>
+                        <Route path="/workouts/view/:workoutId(\d+)">
+                            <WorkoutView />
+                        </Route>
+                    </EquipmentProvider>
                 </MoveCombinationProvider>
             </WorkoutProvider>
 
