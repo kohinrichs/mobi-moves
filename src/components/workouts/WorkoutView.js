@@ -15,7 +15,12 @@ const {workoutId} = useParams();
 
 
   const history = useHistory();
+  
   const filteredArray = moveCombinations.filter(mc => mc.workoutId === parseInt(workoutId))
+  
+ filteredArray.sort(function(a,b) {
+    return a.positionInWorkout - b.positionInWorkout
+  })
  
   const handleDelete = () => {
     deleteWorkout(workout.id)

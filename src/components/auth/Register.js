@@ -6,7 +6,7 @@ export const Register = (props) => {
     const firstName = useRef()
     const lastName = useRef()
     const email = useRef()
-    const verifyPassword = useRef()
+    // const verifyPassword = useRef()
     const conflictDialog = useRef()
     const history = useHistory()
 
@@ -37,7 +37,7 @@ export const Register = (props) => {
                         .then(createdUser => {
                             if (createdUser.hasOwnProperty("id")) {
                                 localStorage.setItem("mobi_user", createdUser.id)
-                                history.push("/")
+                                history.push("/workouts")
                             }
                         })
                 }
@@ -57,7 +57,7 @@ export const Register = (props) => {
             </dialog>
 
             <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Please Register to create a MOBI account.</h1>
+                <h1 className="h3 mb-3 font-weight-normal">First Time?</h1>
                 <fieldset>
                     <label htmlFor="firstName"> First Name </label>
                     <input ref={firstName} type="text" name="firstName" className="form-control" placeholder="First name" required autoFocus />
@@ -71,7 +71,7 @@ export const Register = (props) => {
                     <input ref={email} type="email" name="email" className="form-control" placeholder="Email address" required />
                 </fieldset>
                 <fieldset>
-                    <button type="submit"> Sign in </button>
+                    <button type="submit"> Get Started </button>
                 </fieldset>
             </form>
         </main>

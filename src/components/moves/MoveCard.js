@@ -6,7 +6,6 @@ export const MoveCard = ({ move , handleClick }) => {
 
 const history = useHistory()
 
-
     return (
         <section className="move">
             <h3 className="move__name">{move.name}</h3>

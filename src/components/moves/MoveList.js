@@ -58,7 +58,7 @@ export const MoveList = () => {
 
             <div className="buildAWorkoutForm">
             {
-                <BuildAWorkoutForm key={newArrayOfMoves.id} newArrayOfMoves={newArrayOfMoves}/>
+                <BuildAWorkoutForm key={newArrayOfMoves} newArrayOfMoves={newArrayOfMoves}/>
             }
             </div>
         </>

@@ -24,10 +24,8 @@ export const Mobi = () => (
     />
 
     <Route path="/login">
-      <Login />
-    </Route>
-    <Route path="/register">
       <Register />
+      <Login />
     </Route>
   </>
 );

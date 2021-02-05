@@ -23,7 +23,7 @@ export const Login = props => {
             .then(exists => {
                 if (exists) {
                     localStorage.setItem("mobi_user", exists.id)
-                    history.push("/")
+                    history.push("/workouts")
                 } else {
                     existDialog.current.showModal()
                 }
@@ -39,8 +39,7 @@ export const Login = props => {
 
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>MOBI</h1>
-                    <h2>Welcome Back!</h2>
+                    <h1>Already Know The Drill?</h1>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>
                         <input ref={email} type="email"
@@ -51,14 +50,14 @@ export const Login = props => {
                     </fieldset>
                     <fieldset>
                         <button type="submit">
-                            Sign in
+                            Login
                         </button>
                     </fieldset>
                 </form>
             </section>
-            <section className="link--register">
+            {/* <section className="link--register">
                 <Link to="/register">Not a member yet?</Link>
-            </section>
+            </section> */}
         </main>
     )
 }

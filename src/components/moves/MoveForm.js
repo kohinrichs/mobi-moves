@@ -76,7 +76,7 @@ export const MoveForm = () => {
           <fieldset>
               <div className="form-group">
                   <label htmlFor="name">Move name:</label>
-                  <input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Move name" value={move.name}/>
+                  <input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Move Name" value={move.name}/>
               </div>
           </fieldset>
           <fieldset>
