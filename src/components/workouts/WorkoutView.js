@@ -65,6 +65,7 @@ console.log(equipmentListForPrint)
       <button onClick={() => {
         history.push(`/workouts`)
       }}>Back</button>
+      <div className="workoutView">
       <section className="workout">
         <h3 className="workout__name">{workout.name}</h3>
         <div className="workout__interval">Interval: {workout.interval?.intervalTime}</div>
@@ -88,6 +89,7 @@ console.log(equipmentListForPrint)
       </div>
 
       <button onClick={handleDelete}>DELETE</button>
+      </div>
     </>
   )
 }
