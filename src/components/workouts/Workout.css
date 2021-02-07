@@ -23,3 +23,12 @@
       display: flex
   }
 
+  .workoutView {
+    flex-basis: 50%;
+    margin: 1em;
+    padding: 1em;
+    height: 10em;
+    width: 10em;
+    
+  }
+

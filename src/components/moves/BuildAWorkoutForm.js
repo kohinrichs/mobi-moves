@@ -3,23 +3,17 @@
 
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory } from 'react-router-dom';
-import { IntervalContext } from "../extras/IntervalProvider"
-import { SetContext } from "../extras/SetProvider"
 import { WorkoutContext } from "../workouts/WorkoutProvider"
 import { MoveCombinationContext } from "../extras/MoveCombinationProvider"
-import { MoveContext } from "./MoveProvider"
 import { EquipmentContext } from "../extras/EquipmentProvider";
 import "./Move.css"
 
 
 
-export const BuildAWorkoutForm = ({ newArrayOfMoves }) => {
+export const BuildAWorkoutForm = ({ newArrayOfMoves, workout }) => {
     const { addMoveCombination } = useContext(MoveCombinationContext)
     const { addWorkout } = useContext(WorkoutContext)
-    const { interval, getInterval } = useContext(IntervalContext)
-    const { set, getSet } = useContext(SetContext)
-    const { getMoves } = useContext(MoveContext)
-    const {equipment, getEquipment } = useContext(EquipmentContext)
+    const { getEquipment } = useContext(EquipmentContext)
 
     const history = useHistory();
 
@@ -27,15 +21,7 @@ export const BuildAWorkoutForm = ({ newArrayOfMoves }) => {
     With React, we do not target the DOM with `document.querySelector()`. Instead, our return (render) reacts to state or props.
     Define the intial state of the form inputs with useState()
     */
-
-    const [workout, setWorkout] = useState({
-        name: "",
-        intervalId: 0,
-        setId: 0,
-        userId: parseInt(localStorage.getItem("mobi_user")),
-        id: 0
-    });
-
+   
     const [moveCombinations, setMoveCombinations] = useState([]);
 
     const newMoveCombinations = [ ...moveCombinations ]
@@ -43,7 +29,7 @@ export const BuildAWorkoutForm = ({ newArrayOfMoves }) => {
     const movesForWorkout = [...newArrayOfMoves]
     console.log("moves for workout", movesForWorkout)
 
- //----------
+// ----
 
 let equipmentList = movesForWorkout.map(e => e.equipment.name)
 console.log(equipmentList)
@@ -60,41 +46,11 @@ console.log(uniqueEquipmentList)
     Reach out to the world and get interval state
     and sets state on initialization, so we can provide their data in the form dropdowns
     */
+
     useEffect(() => {
-        getInterval()
-            .then(getSet)
-            .then(()=> getMoves)
-            .then(()=> getEquipment)
+        getEquipment()
     }, [])
 
-
-    //when a field changes, update state. The return will re-render and display based on the values in state
-
-    const handleControlledInputChange = (event) => {
-
-        /* When changing a state object or array,
-        always create a copy, make changes, and then set state.*/
-
-        const newWorkout = { ...workout }
-
-        let selectedVal = event.target.value
-
-        // forms always provide values as strings. But we want to save the ids as numbers. This will cover both customer and location ids
-
-        if (event.target.id.includes("Id")) {
-            selectedVal = parseInt(selectedVal)
-        }
-        /* Move is an object with properties. Set the property to the new value using object bracket notation. */
-        
-        if (event.target.id !== "moveId") {
-            newWorkout[event.target.id] = selectedVal
-        }
-         // update state
-         setWorkout(newWorkout)
-         
-         
-     
-    }
 
     // When the save button is clicked, need to take all of the ids from the objects in moves for workout,
     // and make objects with those Ids in the newMoveCombinations array. Then need to update that array of 
@@ -105,7 +61,9 @@ console.log(uniqueEquipmentList)
 
         const intervalId = workout.intervalId
         const setId = workout.setId
+        
         let positionInWorkoutKey = 1
+        
         movesForWorkout.map(move => {
             let newMove = {
                 moveId: move.id,
@@ -117,8 +75,8 @@ console.log(uniqueEquipmentList)
             setMoveCombinations(newMoveCombinations)
         })
         
-        if (intervalId === 0 || setId === 0) {
-            window.alert("Please select an interval and number of sets")
+        if (intervalId === 0 || setId === 0 || workout.name === "") {
+            window.alert("Please select a name, interval, and number of sets")
         } else {
 
             addWorkout({
@@ -138,44 +96,12 @@ console.log(uniqueEquipmentList)
     }
   
     return (
-        <div className="buildAWorkoutForm">
-            <form className="workoutForm">
+        <div className="buildAWorkoutForm__moves">
+        
                 <h2 className="workoutForm__title">Build A Workout</h2>
-                <fieldset>
-                    <div className="form-group">
-                        <label htmlFor="name">Workout Name:</label>
-                        <input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Name your workout." value={workout.name} />
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <div className="form-group">
-                        <label htmlFor="interval">What's the time interval?</label>
-                        <select defaultValue={workout.intervalId} name="intervalId" id="intervalId" onChange={handleControlledInputChange} className="form-control" >
-                            <option value="0">Select your interval</option>
-                            {interval.map(i => (
-                                <option key={i.id} value={i.id}>
-                                    {i.intervalTime}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <div className="form-group">
-                        <label htmlFor="setId">How many times will you complete each series? </label>
-                        <select defaultValue={workout.setId} name="setId" id="setId" onChange={handleControlledInputChange} className="form-control" >
-                            <option value="0">Select the number of sets</option>
-                            {set.map(s => (
-                                <option key={s.id} value={s.id}>
-                                    {s.numberOfSets}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                </fieldset>
                 <ul className="list-group">
                     {movesForWorkout.map(move => (
-                        <li>{move.name}</li>
+                        <li key={move.name}>{move.name}</li>
                     ))}
                 </ul>
             <button className="btn btn-primary"
@@ -189,7 +115,6 @@ console.log(uniqueEquipmentList)
                 }
                 </div>
             </div>
-            </form>
         </div>
     )
 }
