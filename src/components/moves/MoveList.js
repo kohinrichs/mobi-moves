@@ -92,9 +92,6 @@ export const MoveList = () => {
         // update state
         setWorkout(newWorkout)
     }
-
-    // let equipmentListForPrint = equipment.filter(e => uniqueEquipmentList.includes(e.id)).map(e => e.name)
-    // console.log(equipmentListForPrint)
     
     return (
         <>
@@ -104,21 +101,60 @@ export const MoveList = () => {
                 Add A Move
             </button>
 
-            {/* <div className="moves">
-                {  
-                    muscleGroup.filter(mg => filteredArray.includes(mg.id)).map(move => {
-                        return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
-                    })
-                }
-            </div> */}
-
             <div className="movesView">
-                <div className="moves">
-                    {
-                        filteredArray.map(move => {
-                            return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
-                        })
-                    }
+                <div>
+                    <h3>Arms</h3>
+                    <div className="moves--arms">
+                        {
+                            filteredArray.filter(mg => mg.id === 1).map(move => {
+                                return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
+                            })
+                        }
+                    </div>
+                </div>
+
+                <div>
+                    <h3>Legs</h3>
+                    <div className="moves--arms">
+                        {
+                            filteredArray.filter(mg => mg.id === 2).map(move => {
+                                return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
+                            })
+                        }
+                    </div>
+                </div>
+
+                <div>
+                    <h3>Full Body</h3>
+                    <div className="moves--arms">
+                        {
+                            filteredArray.filter(mg => mg.id === 3).map(move => {
+                                return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
+                            })
+                        }
+                    </div>
+                </div>
+
+                <div>
+                    <h3>Core</h3>
+                    <div className="moves--arms">
+                        {
+                            filteredArray.filter(mg => mg.id === 4).map(move => {
+                                return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
+                            })
+                        }
+                    </div>
+                </div>
+
+                <div>
+                    <h3>Cardio</h3>
+                    <div className="moves--arms">
+                        {
+                            filteredArray.filter(mg => mg.id === 5).map(move => {
+                                return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
+                            })
+                        }
+                    </div>
                 </div>
             </div>
 
