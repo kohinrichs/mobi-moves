@@ -11,7 +11,14 @@ export const WorkoutList = () => {
 
   const history = useHistory()
   const currentUserId = (parseInt(localStorage.getItem("mobi_user")))
-  const filteredArray = workouts.filter(w => w.userId === currentUserId)
+  let filteredArray = workouts.filter(w => w.userId === currentUserId)
+
+let newFilteredArray = filteredArray.sort((a, b) => {
+    let fa = a.name.toLowerCase();
+    let fb = b.name.toLowerCase();
+    
+    return fa == fb ? 0 : fa > fb ? 1 : -1
+})
 
   //useEffect - reach out to the world for something
   useEffect(() => {
