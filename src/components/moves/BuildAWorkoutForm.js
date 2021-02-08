@@ -37,6 +37,8 @@ console.log(equipmentList)
 let uniqueEquipmentList = [...new Set(equipmentList)]
 console.log(uniqueEquipmentList)
 
+uniqueEquipmentList = uniqueEquipmentList.filter(e => e !== 6)
+
 // let equipmentListForPrint = equipment.filter(e => uniqueEquipmentList.includes(e.id)).map(e => e.name)
 // console.log(equipmentListForPrint)
 
@@ -110,8 +112,9 @@ console.log(uniqueEquipmentList)
           </button>
           <div className="workout__equipmentList">
                 <h3 className="workout__equipmentList--name">Equipment List:</h3>
-                <div>{
-                    uniqueEquipmentList.map(equipment => equipment).join(", ")
+                <div>
+                {
+                   uniqueEquipmentList.length ? uniqueEquipmentList.map(equipment => equipment).join(", ") : "No Equipment Needed"
                 }
                 </div>
             </div>

@@ -11,12 +11,10 @@ export const WorkoutView = () => {
   const { moveCombinations, getMoveCombinations, deleteMoveCombination } = useContext(MoveCombinationContext)
   const { equipment, getEquipment } = useContext(EquipmentContext)
 
-const {workoutId} = useParams();
-
-  const [workout, setWorkout] = useState({})
- 
-
+  const {workoutId} = useParams();
   const history = useHistory();
+  
+  const [workout, setWorkout] = useState({})
   
   let filteredArray = moveCombinations.filter(mc => mc.workoutId === parseInt(workoutId))
   
@@ -35,11 +33,12 @@ console.log(equipmentList)
 let uniqueEquipmentList = [...new Set(equipmentList)]
 console.log(uniqueEquipmentList)
 
-// Now I need to take the ids in the uniqueEquipmentList array and match them with equipment and return the name of the equipment
-// If the id from the array matches an id from the equipment list, give me the .name propery of the equipment
+uniqueEquipmentList = uniqueEquipmentList.filter(e => e !== 6)
 
 let equipmentListForPrint = equipment.filter(e => uniqueEquipmentList.includes(e.id)).map(e => e.name)
 console.log(equipmentListForPrint)
+
+// -----
 
   const handleDelete = () => {
     deleteWorkout(workout.id)
@@ -54,7 +53,7 @@ console.log(equipmentListForPrint)
 
     useEffect(() => {
         getMoveCombinations()
-         .then(getEquipment)
+        .then(getEquipment)
             .then(getWorkoutById(workoutId)
                 .then(workout => { setWorkout(workout) })
             )
@@ -82,8 +81,9 @@ console.log(equipmentListForPrint)
 
       <div className="workout__equipmentList">
         <h3 className="workout__equipmentList--name">Equipment List:</h3>
-        <div>{
-          equipmentListForPrint.map(equipment => equipment).join(", ")
+        <div>
+          {
+          equipmentListForPrint.length ? equipmentListForPrint.map(equipment => equipment).join(", ") : "No Equipment Needed"
         }
         </div>
       </div>
