@@ -6,8 +6,6 @@
     justify-content: space-between;
     border: 5px black;
     margin: 2rem;
-    max-height: 40rem;
-    overflow: scroll;
   }
   
   .move {
@@ -21,5 +19,18 @@
 
 .movesView {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    max-height: 40rem;
+    overflow: scroll;
+    flex-basis: 60%
+}
+
+.buildAWorkoutForm {
+  display: flex;
+  flex-basis: 35%
+}
+
+.movePage{
+  display: flex;
+  flex-direction: row;
 }

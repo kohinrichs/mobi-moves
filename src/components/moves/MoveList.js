@@ -27,9 +27,9 @@ export const MoveList = () => {
     const currentUserId = (parseInt(localStorage.getItem("mobi_user")))
     const filteredArray = moves.filter(m => m.userId === currentUserId)
 
-    filteredArray.sort(function (a, b) {
-        return a.muscleGroupId - b.muscleGroupId
-    })
+    // filteredArray.sort(function (a, b) {
+    //     return a.muscleGroupId - b.muscleGroupId
+    // })
 
     const [arrayOfMoves, setArrayOfMoves] = useState([])
 
@@ -95,18 +95,21 @@ export const MoveList = () => {
     
     return (
         <>
+            
             <h1>Excercise Library</h1>
 
             <button onClick={() => { history.push("/moves/create") }}>
                 Add A Move
             </button>
 
+            <div className="movePage">
+
             <div className="movesView">
                 <div>
-                    <h3>Arms</h3>
-                    <div className="moves--arms">
+                <h3>Upper Body</h3>
+                    <div className="moves moves--upper">
                         {
-                            filteredArray.filter(mg => mg.id === 1).map(move => {
+                            filteredArray.filter(m => m.muscleGroup.id === 1).map(move => {
                                 return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
                             })
                         }
@@ -114,21 +117,10 @@ export const MoveList = () => {
                 </div>
 
                 <div>
-                    <h3>Legs</h3>
-                    <div className="moves--arms">
+                    <h3>Lower Body</h3>
+                    <div className="moves moves--lower">
                         {
-                            filteredArray.filter(mg => mg.id === 2).map(move => {
-                                return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
-                            })
-                        }
-                    </div>
-                </div>
-
-                <div>
-                    <h3>Full Body</h3>
-                    <div className="moves--arms">
-                        {
-                            filteredArray.filter(mg => mg.id === 3).map(move => {
+                            filteredArray.filter(m => m.muscleGroup.id === 2).map(move => {
                                 return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
                             })
                         }
@@ -137,9 +129,9 @@ export const MoveList = () => {
 
                 <div>
                     <h3>Core</h3>
-                    <div className="moves--arms">
+                    <div className="moves moves--core">
                         {
-                            filteredArray.filter(mg => mg.id === 4).map(move => {
+                            filteredArray.filter(m => m.muscleGroup.id === 3).map(move => {
                                 return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
                             })
                         }
@@ -148,9 +140,20 @@ export const MoveList = () => {
 
                 <div>
                     <h3>Cardio</h3>
-                    <div className="moves--arms">
+                    <div className="moves moves--cardio">
                         {
-                            filteredArray.filter(mg => mg.id === 5).map(move => {
+                            filteredArray.filter(m => m.muscleGroup.id === 4).map(move => {
+                                return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
+                            })
+                        }
+                    </div>
+                </div>
+
+                <div>
+                    <h3>Warm-up/Mobility</h3>
+                    <div className="moves moves--warmUp">
+                        {
+                            filteredArray.filter(m => m.muscleGroup.id === 5).map(move => {
                                 return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
                             })
                         }
@@ -203,6 +206,7 @@ export const MoveList = () => {
                     </div>
 
                 </form>
+            </div>
             </div>
         </>
     )
