@@ -35,9 +35,10 @@ let equipmentList = movesForWorkout.map(e => e.equipment.name)
 console.log(equipmentList)
 
 let uniqueEquipmentList = [...new Set(equipmentList)]
-console.log(uniqueEquipmentList)
 
-uniqueEquipmentList = uniqueEquipmentList.filter(e => e !== 6)
+uniqueEquipmentList = uniqueEquipmentList.filter(e => e !== "No equipment")
+
+console.log(uniqueEquipmentList)
 
 // let equipmentListForPrint = equipment.filter(e => uniqueEquipmentList.includes(e.id)).map(e => e.name)
 // console.log(equipmentListForPrint)
