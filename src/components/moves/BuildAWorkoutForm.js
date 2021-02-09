@@ -8,7 +8,7 @@ import "./Move.css"
 //--- BuildAWorkoutForm receives arrayOfMoves and workout as props from MoveList
 export const BuildAWorkoutForm = ({ arrayOfMoves, workout }) => {
     const { addMoveCombination } = useContext(MoveCombinationContext)
-    const { addWorkout } = useContext(WorkoutContext)
+    const { workouts, getWorkouts, addWorkout } = useContext(WorkoutContext)
     const { getEquipment } = useContext(EquipmentContext)
 
     const history = useHistory();
@@ -33,6 +33,7 @@ export const BuildAWorkoutForm = ({ arrayOfMoves, workout }) => {
     // ---Reached out in tothe world to get equipment
     useEffect(() => {
         getEquipment()
+            .then(getWorkouts)
     }, [])
 
     //--- This function is called when a workout is saved and handles saving the workout to the datatbase.
@@ -63,7 +64,9 @@ export const BuildAWorkoutForm = ({ arrayOfMoves, workout }) => {
         const setId = workout.setId
 
         if (intervalId === 0 || setId === 0 || workout.name === "") {
-            window.alert("Please select a name, interval, and number of sets")
+            window.alert("Please select a name, interval, and number of sets and a few moves!")
+        } else if (workouts.filter(w => w.name === workout.name)) {
+            window.alert("Oh no! You alreayd have a workout with this name. Please use a different name.")
         } else {
             addWorkout({
                 name: workout.name,

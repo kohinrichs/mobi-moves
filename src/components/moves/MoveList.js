@@ -45,12 +45,15 @@ export const MoveList = () => {
     // workout button, the function takes the move object as a parameter and adds it to the newArrayOfMoves. Then the state is set with the newArrayOfMoves
 
     const MoveForForm = (move) => {
-
         //--- Use spread operator to create a copy of arrayOfMoves
         let newArrayOfMoves = [...arrayOfMoves]
-
-        newArrayOfMoves.push(move)
-        setArrayOfMoves(newArrayOfMoves)
+        //--- If/else so move can't be added to a workout multiple times.
+        if (newArrayOfMoves.find(m => m.id === move.id)) {
+            window.alert("Oh no! This move has already been added to the workout. Please pick a different move.")
+        } else {
+            newArrayOfMoves.push(move)
+            setArrayOfMoves(newArrayOfMoves)
+        }
     }
 
     //--- In order to avoid the form selections clearing upon re-render when a new move is added, I moved the top portion of the BuildAWorkoutForm to the MoveList so the state
@@ -74,7 +77,7 @@ export const MoveList = () => {
         newWorkout[event.target.id] = selectedVal
 
         //--- Update the state of workout using newWorkout
-        setWorkout(newWorkout)
+            setWorkout(newWorkout)
     }
 
     //--- The return contains the Add Move button, the library of moves (sorted and displayed by muscle group), and the Build A Workout Form (the top half on this component and the

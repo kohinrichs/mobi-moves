@@ -6,7 +6,7 @@ import { MuscleGroupContext } from "../extras/MuscleGroupProvider"
 import "./Move.css"
 
 export const MoveForm = () => {
-  const { addMove } = useContext(MoveContext)
+  const { moves, getMoves, addMove } = useContext(MoveContext)
   const { equipment, getEquipment } = useContext(EquipmentContext)
   const { muscleGroup, getMuscleGroup } = useContext(MuscleGroupContext)
 
@@ -25,6 +25,7 @@ export const MoveForm = () => {
   useEffect(() => {
     getEquipment()
       .then(getMuscleGroup)
+      .then(getMoves)
   }, [])
 
   //--- When a field changes in the form, update state. The return will re-render and display based on the values in state controlled component. Used 
@@ -61,6 +62,8 @@ export const MoveForm = () => {
     //--- Prevent the form from being submitted if it is incomplete.
     if (name == "" || description === "" || equipmentId === 0 || muscleGroupId === 0) {
       window.alert("Please fill out the entire form.")
+    } else if (moves.filter(m => m.name === name)) {
+      window.alert("Oh no! You alreayd have a move with this name. Please use a different name.")
     } else {
       //--- Invoke addMove with the current state of move. Upon completion, change the url and display the excercise library.
       addMove(move)
