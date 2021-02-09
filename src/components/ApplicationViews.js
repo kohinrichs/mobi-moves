@@ -54,9 +54,11 @@ export const ApplicationViews = () => {
             </WorkoutProvider>
 
             <MoveProvider>
-                <Route exact path="/moves/detail/:moveId(\d+)">
-                    <MoveDetail />
-                </Route>
+                <MoveCombinationProvider>
+                    <Route exact path="/moves/detail/:moveId(\d+)">
+                        <MoveDetail />
+                    </Route>
+                </MoveCombinationProvider>
             </MoveProvider>
 
             <MoveProvider>
