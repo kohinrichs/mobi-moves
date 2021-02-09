@@ -1,17 +1,20 @@
 import React, { useContext, useEffect, useState } from "react"
+import { useParams, useHistory } from "react-router-dom"
 import { MoveContext } from "./MoveProvider"
 import "./Move.css"
-import { useParams, useHistory } from "react-router-dom"
 
 export const MoveDetail = () => {
-  
+
   const { getMoveById, deleteMove } = useContext(MoveContext)
-
-	const [move, setMove] = useState({})
-
-	const {moveId} = useParams();
   const history = useHistory();
-  
+
+  //--- Accessing the moveId from the URL
+  const { moveId } = useParams();
+
+  //--- Will set the state of move in UseEffect after gettingMoveById with the Id from useParams
+  const [move, setMove] = useState({})
+
+  //--- Uses id to delete the move if Delete button is clicked. Then routes back to /moves.
   const handleDelete = () => {
     deleteMove(move.id)
       .then(() => {
@@ -19,13 +22,15 @@ export const MoveDetail = () => {
       })
   }
 
+  //--- Reaching out into the world to get the move assocaited with the id from useParams and then set it as state
   useEffect(() => {
     getMoveById(moveId)
-    .then((response) => {
-      setMove(response)
-    })
-    }, [])
+      .then((response) => {
+        setMove(response)
+      })
+  }, [])
 
+  //--- Using the move state to print the details for the move to the DOM
   return (
     <>
       <button onClick={() => {

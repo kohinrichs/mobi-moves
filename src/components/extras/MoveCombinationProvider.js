@@ -1,16 +1,16 @@
 import React, { useState, createContext } from "react"
 
-// The context is imported and used by individual components that need data
+//--- The context is imported and used by individual components that need data
 export const MoveCombinationContext = createContext()
 
-// This component establishes what data can be used.
+//--- This component establishes what data can be used.
 export const MoveCombinationProvider = (props) => {
     const [moveCombinations, setMoveCombinations] = useState([])
 
     const getMoveCombinations = () => {
         return fetch("http://localhost:8088/moveCombinations?_expand=workout&_expand=move")
-        .then(res => res.json())
-        .then(setMoveCombinations)
+            .then(res => res.json())
+            .then(setMoveCombinations)
     }
 
     const getMoveCombinationById = (id) => {
@@ -26,8 +26,8 @@ export const MoveCombinationProvider = (props) => {
             },
             body: JSON.stringify(mc)
         })
-        .then(response => response.json())
-        .then(getMoveCombinations)
+            .then(response => response.json())
+            .then(getMoveCombinations)
     }
 
     const deleteMoveCombination = mcId => {
@@ -39,14 +39,14 @@ export const MoveCombinationProvider = (props) => {
 
     const updateMoveCombination = (mc) => {
         return fetch(`http://localhost:8088/moveCombinations/${mc.id}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(mc)
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(mc)
         })
-          .then(getMoveCombinations)
-      }
+            .then(getMoveCombinations)
+    }
 
     return (
         <MoveCombinationContext.Provider value={{

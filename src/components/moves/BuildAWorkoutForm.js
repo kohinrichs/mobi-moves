@@ -1,87 +1,70 @@
-// Needs to have a textarea for the name of the workout, two selects for sets and intervals, then you need to be able to add moves from the
-// library to the "list" portion. (3 groups of 4) Will then need an affordance to save
-
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory } from 'react-router-dom';
-import { WorkoutContext } from "../workouts/WorkoutProvider"
+import { EquipmentContext } from "../extras/EquipmentProvider"
 import { MoveCombinationContext } from "../extras/MoveCombinationProvider"
-import { EquipmentContext } from "../extras/EquipmentProvider";
+import { WorkoutContext } from "../workouts/WorkoutProvider"
 import "./Move.css"
 
-
-
-export const BuildAWorkoutForm = ({ newArrayOfMoves, workout }) => {
+//--- BuildAWorkoutForm receives arrayOfMoves and workout as props from MoveList
+export const BuildAWorkoutForm = ({ arrayOfMoves, workout }) => {
     const { addMoveCombination } = useContext(MoveCombinationContext)
     const { addWorkout } = useContext(WorkoutContext)
     const { getEquipment } = useContext(EquipmentContext)
 
     const history = useHistory();
 
-    /*
-    With React, we do not target the DOM with `document.querySelector()`. Instead, our return (render) reacts to state or props.
-    Define the intial state of the form inputs with useState()
-    */
-   
+    //--- Defining initial state for moveCombinations
     const [moveCombinations, setMoveCombinations] = useState([]);
 
-    const newMoveCombinations = [ ...moveCombinations ]
+    //--- Using the spread operator to create copies of moveCombinations and arrayOfMoves
+    const newMoveCombinations = [...moveCombinations]
+    const movesForWorkout = [...arrayOfMoves]
 
-    const movesForWorkout = [...newArrayOfMoves]
-    console.log("moves for workout", movesForWorkout)
+    // --- Equipment List: To display the equipment list as the workout is being built, I mapped over the movesForWorkout array to get the names of the 
+    // equipment associated with the selected moves.
+    let equipmentList = movesForWorkout.map(e => e.equipment.name)
 
-// ----
+    //--- Then used the spread opterator to create a copy of the equipmentList
+    let uniqueEquipmentList = [...new Set(equipmentList)]
 
-let equipmentList = movesForWorkout.map(e => e.equipment.name)
-console.log(equipmentList)
+    //--- Then removed "No equipment" from the array if it occured.
+    uniqueEquipmentList = uniqueEquipmentList.filter(e => e !== "No equipment")
 
-let uniqueEquipmentList = [...new Set(equipmentList)]
-
-uniqueEquipmentList = uniqueEquipmentList.filter(e => e !== "No equipment")
-
-console.log(uniqueEquipmentList)
-
-// let equipmentListForPrint = equipment.filter(e => uniqueEquipmentList.includes(e.id)).map(e => e.name)
-// console.log(equipmentListForPrint)
-
-//-------
-
-    /*
-    Reach out to the world and get interval state
-    and sets state on initialization, so we can provide their data in the form dropdowns
-    */
-
+    // ---Reached out in tothe world to get equipment
     useEffect(() => {
         getEquipment()
     }, [])
 
-
-    // When the save button is clicked, need to take all of the ids from the objects in moves for workout,
-    // and make objects with those Ids in the newMoveCombinations array. Then need to update that array of 
-    // objects during the save process.
-
+    //--- This function is called when a workout is saved and handles saving the workout to the datatbase.
     const handleClickSaveWorkout = (event) => {
-        event.preventDefault() //Prevents the browser from submitting the form
 
-        const intervalId = workout.intervalId
-        const setId = workout.setId
-        
+        //--- Prevents the browser from submitting the form
+        event.preventDefault()
+
+        //--- Counter for positionInTheWorkout
         let positionInWorkoutKey = 1
-        
+
+        //--- When the saved button is clicked, this maps over the moves in the movesForWorkout array and makes a newMoveCombo object. The object is pushed into
+        // the newMoveCombinations array, and then the newMovesCombinations array is used to set the state of MoveCombinations
         movesForWorkout.map(move => {
-            let newMove = {
+            let newMoveCombo = {
                 moveId: move.id,
                 workoutId: 0,
                 positionInWorkout: 0,
                 id: 0
             }
-            newMoveCombinations.push(newMove)
+            newMoveCombinations.push(newMoveCombo)
             setMoveCombinations(newMoveCombinations)
         })
-        
+        //--- Checking to be sure there is information entered for the workout name and and interval and set selected. If not, a window pops up asking the user to 
+        // enter the correct information. Once all the information has been entered, the addWorkout is called with an object created from the data the user entered 
+        // in the form as an argument. The workout portion of the workout is added to the database.
+        const intervalId = workout.intervalId
+        const setId = workout.setId
+
         if (intervalId === 0 || setId === 0 || workout.name === "") {
             window.alert("Please select a name, interval, and number of sets")
         } else {
-
             addWorkout({
                 name: workout.name,
                 intervalId: workout.intervalId,
@@ -89,34 +72,36 @@ console.log(uniqueEquipmentList)
                 userId: parseInt(localStorage.getItem("mobi_user")),
             })
 
-        // Here we are taking the newWorkout object as a parameter in the annonymous .then function. Promise.all takes an array of promises 
-        // and returns a promise. We're then mapping over the newMoveCombinations array and feeding one obeject from it at a time into addMoveCombination
-        //(which is what is creating all the promises). Within addMoveCombination, we're creating a copy of move and adding te workoutId to it.
-        
-        .then((newWorkout) => Promise.all(newMoveCombinations.map(move => addMoveCombination({...move, workoutId: newWorkout.id, positionInWorkout: positionInWorkoutKey++ }))))
-        .then(()=> history.push("/workouts"))
+                //--- Then we need to save the moveCombinations associated with the workout to the database. addWorkout returns the workout object we just saved, so
+                // we take the newWorkout object as a parameter in the annonymous .then function. Promise.all takes an array of promises (which we're creating when mapping over
+                // all the newMoveCombinations and calling addMoveCombination on each object)and returns a promise. We map over the newMoveCombinations array and feed one obeject 
+                // from it at a time into addMoveCombination (which is what is creating all the promises). Within addMoveCombination, we use the spread operator to create a copy of 
+                // move and add the workoutId and positionInWorkoutKey to it.
+
+                .then((newWorkout) => Promise.all(newMoveCombinations.map(move => addMoveCombination({ ...move, workoutId: newWorkout.id, positionInWorkout: positionInWorkoutKey++ }))))
+                .then(() => history.push("/workouts"))
         }
     }
-  
+
+    //--- In the return, we're mapping over the movesForWorkout array to get the names of the moves in the array. There is also a Save button and the equipment list. The 
+    // equipment list uses a ternary statement to either print the equipment in the uniqueEquipmentList or if the array is empty, it prints "No Equipment Needed".
     return (
         <div className="buildAWorkoutForm__moves">
-        
-                <h2 className="workoutForm__title">Build A Workout</h2>
-                <ul className="list-group">
-                    {movesForWorkout.map(move => (
-                        <li key={move.name}>{move.name}</li>
-                    ))}
-                </ul>
+            <ul className="list-group">
+                {movesForWorkout.map(move => (
+                    <li key={move.name}>{move.name}</li>
+                ))}
+            </ul>
             <button className="btn btn-primary"
                 onClick={handleClickSaveWorkout}>
                 Save
           </button>
-          <div className="workout__equipmentList">
+            <div className="workout__equipmentList">
                 <h3 className="workout__equipmentList--name">Equipment List:</h3>
                 <div>
-                {
-                   uniqueEquipmentList.length ? uniqueEquipmentList.map(equipment => equipment).join(", ") : "No Equipment Needed"
-                }
+                    {
+                        uniqueEquipmentList.length ? uniqueEquipmentList.map(equipment => equipment).join(", ") : "No Equipment Needed"
+                    }
                 </div>
             </div>
         </div>

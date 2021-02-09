@@ -6,37 +6,43 @@ import "./Workout.css"
 
 export const WorkoutList = () => {
 
-  // This state changes when `getWorkouts()` is invoked below
-  const { workouts, getWorkouts } = useContext(WorkoutContext)
+    //--- This state changes when `getWorkouts()` is invoked below
 
-  const history = useHistory()
-  const currentUserId = (parseInt(localStorage.getItem("mobi_user")))
-  let filteredArray = workouts.filter(w => w.userId === currentUserId)
+    const { workouts, getWorkouts } = useContext(WorkoutContext)
 
-let newFilteredArray = filteredArray.sort((a, b) => {
-    let fa = a.name.toLowerCase();
-    let fb = b.name.toLowerCase();
-    
-    return fa == fb ? 0 : fa > fb ? 1 : -1
-})
+    const history = useHistory()
 
-  //useEffect - reach out to the world for something
-  useEffect(() => {
-    getWorkouts()
-  }, [])
+    //--- Retrieving the id of the current user from localStorage
+    const currentUserId = (parseInt(localStorage.getItem("mobi_user")))
 
+    //--- Filtering through the workouts to only show the workouts for the current user
+    let filteredArray = workouts.filter(w => w.userId === currentUserId)
 
+    //--- Sorting the filteredArray to show the workouts in alphabetical order.
+    let newFilteredArray = filteredArray.sort((a, b) => {
+        let fa = a.name.toLowerCase();
+        let fb = b.name.toLowerCase();
+
+        return fa == fb ? 0 : fa > fb ? 1 : -1
+    })
+
+    //--- useEffect - reach out to the world to get the workouts
+    useEffect(() => {
+        getWorkouts()
+    }, [])
+
+    //--- Making workout cards from the alphabetized array of workouts associated with the current user
     return (
         <>
             <h1>Workout Library</h1>
 
-            <button onClick={() => {history.push("/moves")}}>
+            <button onClick={() => { history.push("/moves") }}>
                 Build A Workout
             </button>
 
             <div className="workouts">
                 {
-                    filteredArray.map(workout => {
+                    newFilteredArray.map(workout => {
                         return <WorkoutCard key={workout.id} workout={workout} />
                     })
                 }
@@ -44,5 +50,5 @@ let newFilteredArray = filteredArray.sort((a, b) => {
         </>
     )
 
-    
+
 }
