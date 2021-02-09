@@ -1,6 +1,6 @@
 import React, { useState, createContext } from "react"
 
-// The context is imported and used by individual components that need data
+// The context is imported and used by individual components that need this data
 export const MoveContext = createContext()
 
 // This component establishes what data can be used.

@@ -2,6 +2,8 @@ import React from "react"
 import { Link } from "react-router-dom"
 import "./NavBar.css"
 
+// Only have two NavBar options - Workouts and Moves. Would like to add a Logout button in the future.
+
 export const NavBar = (props) => {
     return (
     <>

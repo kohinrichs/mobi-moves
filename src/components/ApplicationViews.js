@@ -1,23 +1,22 @@
 import React from "react"
 import { Route } from "react-router-dom"
+import { EquipmentProvider } from "./extras/EquipmentProvider"
+import { IntervalProvider } from "./extras/IntervalProvider"
+import { MoveCombinationProvider } from "./extras/MoveCombinationProvider"
+import { MoveDetail } from "./moves/MoveDetail"
+import { MoveForm } from "./moves/MoveForm"
+import { MoveList } from "./moves/MoveList"
+import { MoveProvider } from "./moves/MoveProvider"
+import { MuscleGroupProvider } from "./extras/MuscleGroupProvider"
+import { SetProvider } from "./extras/SetProvider"
 import { WorkoutList } from "./workouts/WorkoutList"
 import { WorkoutProvider } from "./workouts/WorkoutProvider"
 import { WorkoutView } from "./workouts/WorkoutView"
-import { MoveProvider } from "./moves/MoveProvider"
-import { MoveList } from "./moves/MoveList"
-import { MoveDetail } from "./moves/MoveDetail"
-import { MoveForm } from "./moves/MoveForm"
-import { EquipmentProvider } from "./extras/EquipmentProvider"
-import { MuscleGroupProvider } from "./extras/MuscleGroupProvider"
-import { MoveCombinationProvider } from "./extras/MoveCombinationProvider"
-import { IntervalProvider } from "./extras/IntervalProvider"
-import { SetProvider } from "./extras/SetProvider"
-
 
 export const ApplicationViews = () => {
     return (
         <>
-            {/* Render the workout library when http://localhost:3000/ */}
+            {/* Render the workout library when http://localhost:3000/workouts */}
             <WorkoutProvider>
                 <Route exact path="/workouts">
                     <WorkoutList />
@@ -27,7 +26,7 @@ export const ApplicationViews = () => {
             <WorkoutProvider>
                 <MoveCombinationProvider>
                     <EquipmentProvider>
-                        <Route path="/workouts/view/:workoutId(\d+)">
+                        <Route exact path="/workouts/view/:workoutId(\d+)">
                             <WorkoutView />
                         </Route>
                     </EquipmentProvider>
@@ -43,7 +42,7 @@ export const ApplicationViews = () => {
                             <SetProvider>
                                 <MuscleGroupProvider>
                                     <EquipmentProvider>
-                                        <Route exact exact path="/moves">
+                                        <Route exact path="/moves">
                                             <MoveList />
                                         </Route>
                                     </EquipmentProvider>
