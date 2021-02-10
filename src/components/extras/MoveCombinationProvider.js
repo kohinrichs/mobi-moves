@@ -34,7 +34,7 @@ export const MoveCombinationProvider = (props) => {
         return fetch(`http://localhost:8088/moveCombinations/${mcId}`, {
             method: "DELETE"
         })
-            .then(getMoveCombinationById)
+            .then(getMoveCombinations)
     }
 
     const updateMoveCombination = (mc) => {
