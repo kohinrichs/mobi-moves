@@ -65,7 +65,7 @@ export const BuildAWorkoutForm = ({ arrayOfMoves, workout, handleRemoveMove }) =
 
         if (intervalId === 0 || setId === 0 || workout.name === "") {
             window.alert("Please select a name, interval, and number of sets and a few moves!")
-        } else if (workouts.filter(w => w.name === workout.name)) {
+        } else if (workouts.find(w => w.name === workout.name)) {
             window.alert("Oh no! You already have a workout with this name. Please use a different name.")
         } else {
             addWorkout({
