@@ -39,13 +39,12 @@ export const WorkoutView = () => {
   // an array of equipment names for print. .includes() returns true or false
   let equipmentListForPrint = equipment.filter(e => uniqueEquipmentList.includes(e.id)).map(e => e.name)
 
-  //--- Upon button click, the workout will be deleted from the provider and then each move in the filteredArray will be deleted by id.
+  //--- Upon button click, each move in the filteredArray will be deleted by id and then the workout will be deleted from the provider and the user will be rerouted
+  // to the Workouts view.
   const handleDelete = () => {
-    deleteWorkout(workoutId)
-    .then(() => (filteredArray.forEach(mc => deleteMoveCombination(mc.id))))
-      .then(() => {
-        history.push("/workouts")
-      })
+    Promise.all(filteredArray.map(mc => deleteMoveCombination(mc.id)))
+    .then(() => {deleteWorkout(workoutId)})
+    .then(() => { history.push("/workouts") })
   }
   //--- useEffect - reach out to the world to get what we need for this module. This is also where we are getting the workout by Id and setting it to state is being set so the state to
   // be used below in the return

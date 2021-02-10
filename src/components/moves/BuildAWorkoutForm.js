@@ -39,28 +39,14 @@ export const BuildAWorkoutForm = ({ arrayOfMoves, workout, handleRemoveMove }) =
 
     //--- This function is called when a workout is saved and handles saving the workout to the datatbase.
     const handleClickSaveWorkout = (event) => {
-        
+
         //--- Prevents the browser from submitting the form
         event.preventDefault()
 
-        //--- Counter for positionInTheWorkout
-        let positionInWorkoutKey = 1
-
-        //--- When the saved button is clicked, this maps over the moves in the movesForWorkout array and makes a newMoveCombo object. The object is pushed into
-        // the newMoveCombinations array, and then the newMovesCombinations array is used to set the state of MoveCombinations
-        movesForWorkout.map(move => {
-            let newMoveCombo = {
-                moveId: move.id,
-                workoutId: 0,
-                positionInWorkout: 0,
-                id: 0
-            }
-            newMoveCombinations.push(newMoveCombo)
-            setMoveCombinations(newMoveCombinations)
-        })
         //--- Checking to be sure there is information entered for the workout name and and interval and set selected. If not, a window pops up asking the user to 
-        // enter the correct information. Also checks the workout names associated with the user to avoid duplicates. Once all the information has been entered, the addWorkout is called with an object created from the data the user entered 
-        // in the form as an argument. The workout portion of the workout is added to the database.
+        // enter the correct information. Also checks the workout names associated with the user to avoid duplicates. Once all the information has been entered, 
+        // the addWorkout is called with an object created from the data the user entered in the form as an argument. The workout 
+        // portion of the workout is added to the database.
         const intervalId = workout.intervalId
         const setId = workout.setId
 
@@ -69,6 +55,23 @@ export const BuildAWorkoutForm = ({ arrayOfMoves, workout, handleRemoveMove }) =
         } else if (workouts.filter(w => w.userId === currentUserId).find(w => w.name === workout.name)) {
             window.alert("Oh no! You already have a workout with this name. Please use a different name.")
         } else {
+
+            //--- Counter for positionInTheWorkout
+            let positionInWorkoutKey = 1
+
+            //--- When the saved button is clicked, this maps over the moves in the movesForWorkout array and makes a newMoveCombo object. The object is pushed into
+            // the newMoveCombinations array, and then the newMovesCombinations array is used to set the state of MoveCombinations
+            movesForWorkout.map(move => {
+                let newMoveCombo = {
+                    moveId: move.id,
+                    workoutId: 0,
+                    positionInWorkout: 0,
+                    id: 0
+                }
+                newMoveCombinations.push(newMoveCombo)
+                setMoveCombinations(newMoveCombinations)
+            })
+            
             addWorkout({
                 name: workout.name,
                 intervalId: workout.intervalId,
