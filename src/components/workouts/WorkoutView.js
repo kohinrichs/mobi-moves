@@ -8,7 +8,7 @@ import "./Workout.css"
 
 export const WorkoutView = () => {
   const { getWorkoutById, deleteWorkout } = useContext(WorkoutContext)
-  const { moveCombinations, getMoveCombinations } = useContext(MoveCombinationContext)
+  const { moveCombinations, getMoveCombinations, deleteMoveCombination } = useContext(MoveCombinationContext)
   const { equipment, getEquipment } = useContext(EquipmentContext)
 
   const { workoutId } = useParams();
@@ -39,10 +39,10 @@ export const WorkoutView = () => {
   // an array of equipment names for print. .includes() returns true or false
   let equipmentListForPrint = equipment.filter(e => uniqueEquipmentList.includes(e.id)).map(e => e.name)
 
-  //--- Upon button click, the workout will be deleted from the provider.
+  //--- Upon button click, the workout will be deleted from the provider and then each move in the filteredArray will be deleted by id.
   const handleDelete = () => {
-    debugger
-    deleteWorkout(workout.id)
+    deleteWorkout(workoutId)
+    .then(() => (filteredArray.forEach(mc => deleteMoveCombination(mc.id))))
       .then(() => {
         history.push("/workouts")
       })
