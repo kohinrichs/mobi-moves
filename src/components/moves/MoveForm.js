@@ -12,6 +12,8 @@ export const MoveForm = () => {
 
   const history = useHistory();
 
+  const currentUserId = (parseInt(localStorage.getItem("mobi_user")))
+
   //--- Defining the intial state of the move inputs with useState()
   const [move, setMove] = useState({
     name: "",
@@ -59,11 +61,11 @@ export const MoveForm = () => {
     const equipmentId = move.equipmentId
     const muscleGroupId = move.muscleGroupId
 
-    //--- Prevent the form from being submitted if it is incomplete.
+    //--- Prevent the form from being submitted if it is incomplete. Also, checks move name against other move names associated with the user to prevent duplicates.
     if (name == "" || description === "" || equipmentId === 0 || muscleGroupId === 0) {
       window.alert("Please fill out the entire form.")
-    } else if (moves.find(m => m.name === name)) {
-      window.alert("Oh no! You alreayd have a move with this name. Please use a different name.")
+    } else if (moves.filter(m => m.userId === currentUserId).find(m => m.name === name)) {
+      window.alert("Oh no! You already have a move with this name. Please use a different name.")
     } else {
       //--- Invoke addMove with the current state of move. Upon completion, change the url and display the excercise library.
       addMove(move)

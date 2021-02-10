@@ -18,7 +18,6 @@ export const WorkoutProvider = (props) => {
             .then(res => res.json())
     }
 
-    
     const addWorkout = (workout) => {
         return fetch("http://localhost:8088/workouts", {
             method: "POST",
