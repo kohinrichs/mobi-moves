@@ -41,6 +41,7 @@ export const WorkoutView = () => {
 
   //--- Upon button click, the workout will be deleted from the provider.
   const handleDelete = () => {
+    debugger
     deleteWorkout(workout.id)
       .then(() => {
         history.push("/workouts")

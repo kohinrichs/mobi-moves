@@ -3,20 +3,49 @@
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    justify-content: space-between;
-    border: 5px black;
-    margin: 2rem;
+    justify-content: space-around;
     max-height: 40rem;
+    max-width: 80rem;
     overflow: scroll;
+    margin: 6rem;
+  }
+
+  .workoutLibrary {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-around;
+    max-width: 80rem;
+  }
+  h1 {
+    margin: 3rem 0 0 0
+  }
+
+  .buildAWorkout {
+    margin: 0 0 0 3rem
   }
   
   .workout {
-      flex-basis: 20%;
-      margin: 1em;
-      padding: 1em;
-      height: 10em;
-      width: 10em;
-      border: 1px solid goldenrod;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      justify-content: space-around;
+      flex-basis: 25%;
+      margin: 0.5rem;
+      padding: 0.5rem;
+      height: 12rem;
+      width: 12rem;
+      border: .15rem solid goldenrod;
+  }
+
+  h3.workout__name {
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .workout__button {
+    max-width: 8rem;
+    margin: auto;
   }
 
   .workoutView {

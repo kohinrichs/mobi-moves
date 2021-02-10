@@ -34,12 +34,13 @@ export const WorkoutList = () => {
     //--- Making workout cards from the alphabetized array of workouts associated with the current user
     return (
         <>
-            <h1>Workout Library</h1>
+            <div className="workoutLibrary">
+                <h1>Workout Library</h1>
 
-            <button onClick={() => { history.push("/moves") }}>
-                Build A Workout
-            </button>
-
+                <button className="buildAWorkout" onClick={() => { history.push("/moves") }}>
+                    Build A Workout
+                </button>
+            </div>
             <div className="workouts">
                 {
                     newFilteredArray.map(workout => {

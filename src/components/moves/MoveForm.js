@@ -62,7 +62,7 @@ export const MoveForm = () => {
     //--- Prevent the form from being submitted if it is incomplete.
     if (name == "" || description === "" || equipmentId === 0 || muscleGroupId === 0) {
       window.alert("Please fill out the entire form.")
-    } else if (moves.filter(m => m.name === name)) {
+    } else if (moves.find(m => m.name === name)) {
       window.alert("Oh no! You alreayd have a move with this name. Please use a different name.")
     } else {
       //--- Invoke addMove with the current state of move. Upon completion, change the url and display the excercise library.

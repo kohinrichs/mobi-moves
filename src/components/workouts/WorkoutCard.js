@@ -11,7 +11,7 @@ export const WorkoutCard = ({ workout }) => {
     return (
         <section className="workout">
             <h3 className="workout__name">{workout.name}</h3>
-            <button onClick={() => {
+            <button className="workout__button" onClick={() => {
                 history.push(`/workouts/view/${workout.id}`)
             }}>View Workout</button>
         </section>
