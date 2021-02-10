@@ -6,7 +6,7 @@ import { WorkoutContext } from "../workouts/WorkoutProvider"
 import "./Move.css"
 
 //--- BuildAWorkoutForm receives arrayOfMoves and workout as props from MoveList
-export const BuildAWorkoutForm = ({ arrayOfMoves, workout }) => {
+export const BuildAWorkoutForm = ({ arrayOfMoves, workout, handleRemoveMove }) => {
     const { addMoveCombination } = useContext(MoveCombinationContext)
     const { workouts, getWorkouts, addWorkout } = useContext(WorkoutContext)
     const { getEquipment } = useContext(EquipmentContext)
@@ -66,7 +66,7 @@ export const BuildAWorkoutForm = ({ arrayOfMoves, workout }) => {
         if (intervalId === 0 || setId === 0 || workout.name === "") {
             window.alert("Please select a name, interval, and number of sets and a few moves!")
         } else if (workouts.filter(w => w.name === workout.name)) {
-            window.alert("Oh no! You alreayd have a workout with this name. Please use a different name.")
+            window.alert("Oh no! You already have a workout with this name. Please use a different name.")
         } else {
             addWorkout({
                 name: workout.name,
@@ -92,7 +92,7 @@ export const BuildAWorkoutForm = ({ arrayOfMoves, workout }) => {
         <div className="buildAWorkoutForm__moves">
             <ul className="list-group">
                 {movesForWorkout.map(move => (
-                    <li key={move.name}>{move.name}</li>
+                    <li key={move.name}>{move.name} <button onClick={() => { handleRemoveMove(move) }}>X</button></li>
                 ))}
             </ul>
             <button className="btn btn-primary"

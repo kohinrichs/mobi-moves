@@ -44,9 +44,10 @@ export const MoveList = () => {
     //--- Callback function used when the Add To Workout button is clicked on MoveCard so the move information can be shared with the BuildAWorkoutForm. On clicking the add to 
     // workout button, the function takes the move object as a parameter and adds it to the newArrayOfMoves. Then the state is set with the newArrayOfMoves
 
+    //--- Use spread operator to create a copy of arrayOfMoves
+    let newArrayOfMoves = [...arrayOfMoves]
+
     const MoveForForm = (move) => {
-        //--- Use spread operator to create a copy of arrayOfMoves
-        let newArrayOfMoves = [...arrayOfMoves]
         //--- If/else so move can't be added to a workout multiple times.
         if (newArrayOfMoves.find(m => m.id === move.id)) {
             window.alert("Oh no! This move has already been added to the workout. Please pick a different move.")
@@ -54,6 +55,17 @@ export const MoveList = () => {
             newArrayOfMoves.push(move)
             setArrayOfMoves(newArrayOfMoves)
         }
+    }
+
+    //--- Callback function used when the X button is clicked on the BuildAWorkoutForm to remove a move from the workout being built. On click,
+    // the function takes the move object as a parameter and filters it out of the current arrayOfMoves and then sets the new state.
+
+    //--- Use spread operator to create a copy of newArrayOfMoves
+    let updatedArrayOfMoves = [...newArrayOfMoves]
+
+    const RemoveMoveFromWorkout = (move) => {
+        updatedArrayOfMoves = updatedArrayOfMoves.filter(m => m.id !== move.id)
+        setArrayOfMoves(updatedArrayOfMoves)
     }
 
     //--- In order to avoid the form selections clearing upon re-render when a new move is added, I moved the top portion of the BuildAWorkoutForm to the MoveList so the state
@@ -77,7 +89,7 @@ export const MoveList = () => {
         newWorkout[event.target.id] = selectedVal
 
         //--- Update the state of workout using newWorkout
-            setWorkout(newWorkout)
+        setWorkout(newWorkout)
     }
 
     //--- The return contains the Add Move button, the library of moves (sorted and displayed by muscle group), and the Build A Workout Form (the top half on this component and the
@@ -181,7 +193,7 @@ export const MoveList = () => {
                         <div className="workout__moves">
                             {
                                 <BuildAWorkoutForm key={arrayOfMoves} arrayOfMoves={arrayOfMoves}
-                                    key={workout.id} workout={workout} />
+                                    key={workout.id} workout={workout} handleRemoveMove={RemoveMoveFromWorkout} />
                             }
                         </div>
                     </form>
