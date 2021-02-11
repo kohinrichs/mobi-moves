@@ -67,6 +67,9 @@ export const ApplicationViews = () => {
                         <Route exact path="/moves/create">
                             <MoveForm />
                         </Route>
+                        <Route exact path="/moves/edit/:moveId(\d+)">
+                            <MoveForm />
+                        </Route>
                     </MuscleGroupProvider>
                 </EquipmentProvider>
             </MoveProvider>
