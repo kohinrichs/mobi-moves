@@ -49,6 +49,9 @@ export const MoveDetail = () => {
         <div className="move__equipment">Equipment: {move.equipment?.name}</div>
         <div className="move__muscleGroup">Muscle Group: {move.muscleGroup?.name}</div>
         <button onClick={handleDelete}>DELETE</button>
+        <button onClick={() => {
+          history.push(`/moves/edit/${move.id}`)
+        }}>Edit</button>
       </section>
     </>
   )
