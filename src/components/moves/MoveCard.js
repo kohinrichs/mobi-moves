@@ -12,11 +12,11 @@ export const MoveCard = ({ move, handleClick }) => {
     return (
         <section className="move">
             <h3 className="move__name">{move.name}</h3>
-            <button onClick={() => {
+            <button className="button__details" onClick={() => {
                 history.push(`/moves/detail/${move.id}`)
             }}>Details</button>
 
-            <button onClick={() => { handleClick(move) }}>Add to Workout</button>
+            <button className="button__addToWorkout" onClick={() => { handleClick(move) }}>Add to Workout</button>
 
         </section>
     )

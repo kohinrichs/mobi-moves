@@ -69,7 +69,7 @@ export const BuildAWorkoutForm = ({ arrayOfMoves, workout, handleRemoveMove }) =
                     id: 0
                 }
                 newMoveCombinations.push(newMoveCombo)
-                setMoveCombinations(newMoveCombinations)
+                return setMoveCombinations(newMoveCombinations)
             })
             
             addWorkout({

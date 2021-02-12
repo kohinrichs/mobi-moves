@@ -23,7 +23,7 @@ export const WorkoutList = () => {
         let fa = a.name.toLowerCase();
         let fb = b.name.toLowerCase();
 
-        return fa == fb ? 0 : fa > fb ? 1 : -1
+        return fa === fb ? 0 : fa > fb ? 1 : -1
     })
 
     //--- useEffect - reach out to the world to get the workouts
@@ -35,18 +35,21 @@ export const WorkoutList = () => {
     return (
         <>
             <div className="workoutLibrary">
-                <h1>Workout Library</h1>
+                <div className="workoutLibrary__header">
+                    <h1>Workout Library</h1>
 
-                <button className="buildAWorkout" onClick={() => { history.push("/moves") }}>
-                    Build A Workout
+                    <button className="button__buildAWorkout" onClick={() => { history.push("/moves") }}>
+                        Build A Workout
                 </button>
-            </div>
-            <div className="workouts">
-                {
-                    newFilteredArray.map(workout => {
-                        return <WorkoutCard key={workout.id} workout={workout} />
-                    })
-                }
+                </div>
+
+                <div className="workoutLibrary__workouts">
+                    {
+                        newFilteredArray.map(workout => {
+                            return <WorkoutCard key={workout.id} workout={workout} />
+                        })
+                    }
+                </div>
             </div>
         </>
     )

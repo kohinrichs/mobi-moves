@@ -5,8 +5,8 @@ import React from "react"
 export const MoveCombinationCard = ({ mc }) => {
 
     return (
-        <section className="workout_moves--move">
-            <h3 className="workout__move--name">{mc.move?.name}</h3>
+        <section className="workoutViewCard__move">
+            <h3 className="workoutViewCard__move--name">{mc.move?.name}</h3>
         </section>
     )
 }

@@ -4,7 +4,7 @@ import { EquipmentContext } from "../extras/EquipmentProvider"
 import { MoveCombinationContext } from "../extras/MoveCombinationProvider"
 import { MoveCombinationCard } from "../extras/MoveCombinationCard"
 import { WorkoutContext } from "./WorkoutProvider"
-import "./Workout.css"
+import "./WorkoutView.css"
 
 export const WorkoutView = () => {
   const { getWorkoutById, deleteWorkout } = useContext(WorkoutContext)
@@ -43,8 +43,8 @@ export const WorkoutView = () => {
   // to the Workouts view.
   const handleDelete = () => {
     Promise.all(filteredArray.map(mc => deleteMoveCombination(mc.id)))
-    .then(() => {deleteWorkout(workoutId)})
-    .then(() => { history.push("/workouts") })
+      .then(() => { deleteWorkout(workoutId) })
+      .then(() => { history.push("/workouts") })
   }
   //--- useEffect - reach out to the world to get what we need for this module. This is also where we are getting the workout by Id and setting it to state is being set so the state to
   // be used below in the return
@@ -60,34 +60,35 @@ export const WorkoutView = () => {
   // use a terenary operator to check that there is something in the equipmentListForPrint array. If there is not, "No equipment Needed" is printed.
   return (
     <>
-      <button onClick={() => {
-        history.push(`/workouts`)
-      }}>Back</button>
-      <div className="workoutView">
-        <section className="workout">
-          <h3 className="workout__name">{workout.name}</h3>
-          <div className="workout__interval">Interval: {workout.interval?.intervalTime}</div>
-          <div className="workout__set">Sets: {workout.set?.numberOfSets}</div>
-        </section>
+      <div className="workoutViewCard">
+        <button className="button__back" onClick={() => {
+          history.push(`/workouts`)
+        }}>Back</button>
 
-        <div className="workout__moves">
-          {
-            filteredArray.map(mc => {
-              return <MoveCombinationCard key={mc.id} mc={mc} />
-            })
-          }
-        </div>
+        <div className="workoutViewCard__workout">
+          <h3 className="workoutViewCard__workout--name">{workout.name}</h3>
+          <div className="workoutViewCard__workout--interval">Interval: {workout.interval?.intervalTime}</div>
+          <div className="workoutViewCard__workout--set">Sets: {workout.set?.numberOfSets}</div>
 
-        <div className="workout__equipmentList">
-          <h3 className="workout__equipmentList--name">Equipment List:</h3>
-          <div>
+          <div className="workoutViewCard__moves">
             {
-              equipmentListForPrint.length ? equipmentListForPrint.map(equipment => equipment).join(", ") : "No Equipment Needed"
+              filteredArray.map(mc => {
+                return <MoveCombinationCard key={mc.id} mc={mc} />
+              })
             }
           </div>
-        </div>
 
-        <button onClick={handleDelete}>DELETE</button>
+          <div className="workoutViewCard__equipmentList">
+            <h3 className="workoutViewCard__equipmentList--name">Equipment List:</h3>
+            <div>
+              {
+                equipmentListForPrint.length ? equipmentListForPrint.map(equipment => equipment).join(", ") : "No Equipment Needed"
+              }
+            </div>
+          </div>
+
+          <button className="button__deleteWorkout" onClick={handleDelete}>DELETE</button>
+        </div>
       </div>
     </>
   )
