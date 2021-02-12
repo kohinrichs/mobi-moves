@@ -22,12 +22,12 @@ export const MoveList = () => {
     //--- Filtering all the moves so that only the moves associated with the current logged in user display in the Exercise Library
     let filteredArray = moves.filter(m => m.userId === currentUserId)
 
-     //--- Sorting the filteredArray to show the moves in alphabetical order.
-     let newFilteredArray = filteredArray.sort((a, b) => {
+    //--- Sorting the filteredArray to show the moves in alphabetical order.
+    let newFilteredArray = filteredArray.sort((a, b) => {
         let fa = a.name.toLowerCase();
         let fb = b.name.toLowerCase();
 
-        return fa == fb ? 0 : fa > fb ? 1 : -1
+        return fa === fb ? 0 : fa > fb ? 1 : -1
     })
 
     //--- This will be updated to when information is received from the MoveCard and the state is set in the MoveForForm function
@@ -106,60 +106,65 @@ export const MoveList = () => {
 
     return (
         <>
-            <h1>Excercise Library</h1>
-            <button onClick={() => { history.push("/moves/create") }}>
-                Add A Move
-            </button>
             <div className="movePage">
-                <div className="movesView">
-                    <div className="moves">
-                        <h3>Upper Body</h3>
-                        <div className="moves--upper">
-                            {
-                                newFilteredArray.filter(m => m.muscleGroup.id === 1).map(move => {
-                                    return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
-                                })
-                            }
-                        </div>
+                <div className="exerciseLibrary">
+                    <div className="exerciseLibrary__header">
+                        <h1>Exercise Library</h1>
+
+                        <button className="button__addAMove" onClick={() => { history.push("/moves/create") }}>
+                            Add A Move
+                        </button>
                     </div>
-                    <div className="moves">
-                        <h3>Lower Body</h3>
-                        <div className="moves--lower">
-                            {
-                                newFilteredArray.filter(m => m.muscleGroup.id === 2).map(move => {
-                                    return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
-                                })
-                            }
+                    <div className="exerciseLibrary__moves">
+                        <div className="exerciseLibrary__move--group">
+                            <h3>Upper Body</h3>
+                            <div className="moves--upper">
+                                {
+                                    newFilteredArray.filter(m => m.muscleGroup.id === 1).map(move => {
+                                        return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
+                                    })
+                                }
+                            </div>
                         </div>
-                    </div>
-                    <div className="moves">
-                        <h3>Core</h3>
-                        <div className="moves--core">
-                            {
-                                newFilteredArray.filter(m => m.muscleGroup.id === 3).map(move => {
-                                    return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
-                                })
-                            }
+                        <div className="exerciseLibrary__move--group">
+                            <h3>Lower Body</h3>
+                            <div className="moves--lower">
+                                {
+                                    newFilteredArray.filter(m => m.muscleGroup.id === 2).map(move => {
+                                        return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
+                                    })
+                                }
+                            </div>
                         </div>
-                    </div>
-                    <div className="moves">
-                        <h3>Cardio</h3>
-                        <div className="moves--cardio">
-                            {
-                                newFilteredArray.filter(m => m.muscleGroup.id === 4).map(move => {
-                                    return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
-                                })
-                            }
+                        <div className="exerciseLibrary__move--group">
+                            <h3>Core</h3>
+                            <div className="moves--core">
+                                {
+                                    newFilteredArray.filter(m => m.muscleGroup.id === 3).map(move => {
+                                        return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
+                                    })
+                                }
+                            </div>
                         </div>
-                    </div>
-                    <div className="moves">
-                        <h3>Warm-up/Mobility</h3>
-                        <div className="moves--warmUp">
-                            {
-                                newFilteredArray.filter(m => m.muscleGroup.id === 5).map(move => {
-                                    return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
-                                })
-                            }
+                        <div className="exerciseLibrary__move--group">
+                            <h3>Cardio</h3>
+                            <div className="moves--cardio">
+                                {
+                                    newFilteredArray.filter(m => m.muscleGroup.id === 4).map(move => {
+                                        return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
+                                    })
+                                }
+                            </div>
+                        </div>
+                        <div className="exerciseLibrary__move--group">
+                            <h3>Warm-up/Mobility</h3>
+                            <div className="moves--warmUp">
+                                {
+                                    newFilteredArray.filter(m => m.muscleGroup.id === 5).map(move => {
+                                        return <MoveCard key={move.id} move={move} handleClick={MoveForForm} />
+                                    })
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>

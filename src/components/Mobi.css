@@ -37,3 +37,8 @@ strong {
 address {
   margin: 0 0 1.5em;
 }
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

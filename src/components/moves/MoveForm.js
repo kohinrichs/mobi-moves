@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
-import { useHistory, useParams, useLocation } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { EquipmentContext } from "../extras/EquipmentProvider"
 import { MoveContext } from "./MoveProvider"
 import { MuscleGroupContext } from "../extras/MuscleGroupProvider"
@@ -53,7 +53,7 @@ export const MoveForm = () => {
   const handleClickSaveMove = () => {
     // //--- Prevents the browser from submitting the form
     // event.preventDefault()
-    debugger
+  
     //--- Setting variables for the if statement
     const name = move.name
     const description = move.description
@@ -61,7 +61,7 @@ export const MoveForm = () => {
     const muscleGroupId = move.muscleGroupId
 
     //--- Prevent the form from being submitted if it is incomplete. Also, checks move name against other move names associated with the user to prevent duplicates.
-    if (name == "" || description === "" || equipmentId === 0 || muscleGroupId === 0) {
+    if (name === "" || description === "" || equipmentId === 0 || muscleGroupId === 0) {
       window.alert("Please fill out the entire form.")
       // Something about the URL being for create
     } else if (currentLocation === "/moves/create" && moves.filter(m => m.userId === currentUserId).find(m => m.name === name)) {
@@ -114,10 +114,11 @@ export const MoveForm = () => {
 
   return (
     <>
-      <button onClick={() => {
+    <div className="moveForm">
+      <button className="button__back" onClick={() => {
         moveId ? history.push(`/moves/detail/${move.id}`) : history.push("/moves")
       }}>Back</button>
-      <form className="moveForm">
+      <form className="moveForm__form">
         <h2 className="moveForm__title">Add A Move</h2>
         <fieldset>
           <div className="form-group">
@@ -157,7 +158,7 @@ export const MoveForm = () => {
             </select>
           </div>
         </fieldset>
-        <button className="btn btn-primary"
+        <button className="btn btn-primary button__saveMove"
           disabled={isLoading}
           onClick={event => {
             event.preventDefault() // Prevent browser from submitting the form and refreshing the page
@@ -166,6 +167,7 @@ export const MoveForm = () => {
           {moveId ? <>Save</> : <>Add</>}
         </button>
       </form>
+      </div>
     </>
   )
 }

@@ -1,0 +1,38 @@
+  .workoutViewCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .workoutViewCard__workout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-around;
+    justify-content: space-between;
+    text-align: center;
+    margin: 5rem 20rem 5rem 20rem;
+    border: 1px solid black;
+  }
+
+  .workoutViewCard__moves {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1rem;
+    padding: 1rem;
+  }
+  .workoutViewCard__equipmentList{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1rem;
+    padding: 1rem;
+  }
+  .button__deleteWorkout {
+    max-width: 8rem;
+    margin: auto;
+  }
+  .button__back {
+    max-width: 8rem;
+    margin: auto;
+      }
