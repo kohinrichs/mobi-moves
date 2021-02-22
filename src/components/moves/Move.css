@@ -10,7 +10,7 @@
 }
 .exerciseLibrary__header{
   display: flex;
-  display: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: baseline;
   margin: 2rem 5rem 1rem 5rem;
