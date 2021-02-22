@@ -19,10 +19,7 @@ export const NavBar = (props) => {
                 <div className="logo">
                     <h1>MOBI</h1>
                     </div>
-                <div>
-                    <button className="logOutBtn" onClick={handleLogOutButton}>Logout</button>
-                </div>
-            </div>
+              
             <ul className="navbar">
                 <li className="navbar__item active">
                     <Link className="navbar__link" to="/workouts"><h2>WORKOUTS</h2></Link>
@@ -31,6 +28,10 @@ export const NavBar = (props) => {
                     <Link className="navbar__link" to="/moves"><h2>MOVES</h2></Link>
                 </li>
             </ul>
+            <div>
+                    <button className="logOutBtn" onClick={handleLogOutButton}>Logout</button>
+                </div>
+            </div>
         </>
     )
 }
