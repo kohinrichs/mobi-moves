@@ -114,10 +114,12 @@ export const MoveForm = () => {
 
   return (
     <>
-    <div className="moveForm">
-      <button className="button__back" onClick={() => {
+    <div className="buttonContainer">
+    <button className="button__back" onClick={() => {
         moveId ? history.push(`/moves/detail/${move.id}`) : history.push("/moves")
       }}>Back</button>
+    </div>
+    <div className="moveForm">
       <form className="moveForm__form">
         <h2 className="moveForm__title">Add A Move</h2>
         <fieldset>
