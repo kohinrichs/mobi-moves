@@ -10,16 +10,16 @@
 }
 .exerciseLibrary__header{
   display: flex;
-  display: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: baseline;
-  margin: 0rem 3rem 1rem 5rem;
+  margin: 2rem 5rem 1rem 5rem;
 }
-  .button__addAMove{
+.button__addAMove{
     max-width: 10rem;
     max-height: 2rem
   }
-  .exerciseLibrary__moves {
+.exerciseLibrary__moves {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -27,9 +27,9 @@
     max-height: 40rem;
     overflow: scroll;
     margin: 2rem 5rem 2rem 5rem;
-    border: 1px solid black
+    border: 0.5rem solid #00587a
   }
-  .exerciseLibrary__move--group{
+.exerciseLibrary__move--group{
     margin: 1.5rem;
   }
 .moves--upper, .moves--lower, .moves--cardio, .moves--core, .moves--warmUp {
@@ -49,11 +49,11 @@
   padding: 1rem;
   height: 12rem;
   width: 12rem;
-  border: .15rem solid goldenrod;
+  border: .2em solid #008891
 }
 .move__name {
   text-align: center;
-  margin: auto;
+  margin: 1rem 0 0 0;
 }
 .button__details {
   max-width: 8rem;
@@ -62,11 +62,34 @@
 .button__addToWorkout {
   max-width: 9rem;
   margin: auto;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
 }
+
+/* Build A Workout Form */
 .buildAWorkoutForm {
   display: flex;
   flex-basis: 30%;
-  margin: 10rem 0rem 0rem 3rem
+  flex-direction: column;
+  /* justify-content: flex-start; */
+  /* justify-content: space-around;
+  justify-content: space-between; */
+  text-align: center;
+  margin: 5rem 0rem 0rem 3rem;
+}
+.button__saveWorkout {
+  max-width: 8rem;
+  margin: 1rem 0 1rem 0;
+}
+.buildAWorkoutForm__move {
+  list-style-type: none;
+  margin: 1rem 1rem 1rem 1rem;
+}
+.button__removeMove {
+  margin: 0 0 0 2rem;
+}
+.workout__equipmentList {
+  margin: 2rem 0 0 0; 
+  border-top: 2px solid #008891
 }
 
 /* Move Details */
@@ -84,19 +107,22 @@
   text-align: center;
   padding: 5rem 5rem 5rem 5rem;
   margin: 5rem 20rem 5rem 20rem;
-  border: 1px solid black;
+  border: 0.5rem solid #00587a;
 }
 .buttons_container{
   margin: 1rem 1rem 1rem 1rem;
   padding: 1rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 .button__deleteMove {
   max-width: 8rem;
-  margin: auto;
+  margin: 1rem 1rem 1rem 1rem;
 }
 .button__editMove {
   max-width: 8rem;
-  margin: auto;
+  margin: 1rem 1rem 1rem 1rem;
 }
 
 /* Move Form */
@@ -112,12 +138,14 @@
   justify-content: space-around;
   justify-content: space-between;
   text-align: center;
-  margin: 5rem 20rem 5rem 20rem;
+  margin: 3rem 20rem 5rem 20rem;
   padding: 5rem 5rem 5rem 5rem;
-  border: 1px solid black;
+  border: 0.5rem solid #00587a;
 }
-
 .form-group {
+  padding: 0.5rem 5rem 0.5rem 5rem;
+}
+.label {
   padding: 0.5rem 5rem 0.5rem 5rem;
 }
 .button__saveMove{

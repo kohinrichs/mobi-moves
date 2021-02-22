@@ -60,11 +60,12 @@ export const WorkoutView = () => {
   // use a terenary operator to check that there is something in the equipmentListForPrint array. If there is not, "No equipment Needed" is printed.
   return (
     <>
-      <div className="workoutViewCard">
+      <div className="buttonContainer">
         <button className="button__back" onClick={() => {
           history.push(`/workouts`)
         }}>Back</button>
-
+      </div>
+      <div className="workoutViewCard">
         <div className="workoutViewCard__workout">
           <h3 className="workoutViewCard__workout--name">{workout.name}</h3>
           <div className="workoutViewCard__workout--interval">Interval: {workout.interval?.intervalTime}</div>
