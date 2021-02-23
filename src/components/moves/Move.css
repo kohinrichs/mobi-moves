@@ -27,7 +27,7 @@
     max-height: 40rem;
     overflow: scroll;
     margin: 2rem 5rem 2rem 5rem;
-    border: 0.5rem solid #00587a
+    border: 0.25rem solid #00587a
   }
 .exerciseLibrary__move--group{
     margin: 1.5rem;
@@ -74,7 +74,11 @@
   /* justify-content: space-around;
   justify-content: space-between; */
   text-align: center;
-  margin: 5rem 0rem 0rem 3rem;
+  margin: 5rem 0rem 7rem 3rem;
+}
+.workoutForm__title {
+  padding: 0 0 2rem 0;
+  border-bottom: 2px solid #008891;
 }
 .button__saveWorkout {
   max-width: 8rem;
@@ -105,9 +109,12 @@
   justify-content: space-around;
   justify-content: space-between;
   text-align: center;
-  padding: 5rem 5rem 5rem 5rem;
+  padding: 3rem 3rem 1rem 3rem;
   margin: 5rem 20rem 5rem 20rem;
   border: 0.5rem solid #00587a;
+}
+.move__description, .moveDetails__equipment, .moveDetails__muscleGroup {
+  margin: 1rem 1rem 1rem 1rem
 }
 .buttons_container{
   margin: 1rem 1rem 1rem 1rem;
@@ -139,7 +146,7 @@
   justify-content: space-between;
   text-align: center;
   margin: 3rem 20rem 5rem 20rem;
-  padding: 5rem 5rem 5rem 5rem;
+  padding: 2rem 2rem 2rem 2rem;
   border: 0.5rem solid #00587a;
 }
 .form-group {

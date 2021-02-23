@@ -172,14 +172,14 @@ export const MoveList = () => {
                     <form className="workoutForm">
                         <h2 className="workoutForm__title">Build A Workout</h2>
                         <fieldset>
-                            <div className="form-group">
-                                <label htmlFor="name">Workout Name:</label>
+                            <div className="form-group__workout">
+                                <label htmlFor="name"><h4>Workout Name</h4></label>
                                 <input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Name your workout." value={workout.name} />
                             </div>
                         </fieldset>
                         <fieldset>
-                            <div className="form-group">
-                                <label htmlFor="interval">What's the time interval?</label>
+                            <div className="form-group__workout">
+                                <label htmlFor="interval"><h4>What's the time interval?</h4></label>
                                 <select defaultValue={workout.intervalId} name="intervalId" id="intervalId" onChange={handleControlledInputChange} className="form-control" >
                                     <option value="0">Select your interval</option>
                                     {interval.map(i => (
@@ -191,8 +191,8 @@ export const MoveList = () => {
                             </div>
                         </fieldset>
                         <fieldset>
-                            <div className="form-group">
-                                <label htmlFor="setId">How many times will you complete each series? </label>
+                            <div className="form-group__workout">
+                                <label htmlFor="setId"><h4>How many times will you complete each series?</h4></label>
                                 <select defaultValue={workout.setId} name="setId" id="setId" onChange={handleControlledInputChange} className="form-control" >
                                     <option value="0">Select the number of sets</option>
                                     {set.map(s => (

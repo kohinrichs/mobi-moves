@@ -47,10 +47,10 @@ export const MoveDetail = () => {
     </div>
       <div className="moveDetailsCard">
         <div className="moveDetails">
-          <h3 className="moveDetails__name">{move.name}</h3>
-          <div className="move__description">{move.description}</div>
-          <div className="moveDetails__equipment">Equipment: {move.equipment?.name}</div>
-          <div className="moveDetails__muscleGroup">Muscle Group: {move.muscleGroup?.name}</div>
+          <h2 className="moveDetails__name">{move.name}</h2>
+          <div className="move__description"><h3>{move.description}</h3></div>
+          <div className="moveDetails__equipment"><h3>Equipment: {move.equipment?.name}</h3></div>
+          <div className="moveDetails__muscleGroup"><h3>Muscle Group: {move.muscleGroup?.name}</h3></div>
           <div className="buttons_container">
             <button className="button__editMove" onClick={() => {
               history.push(`/moves/edit/${move.id}`)

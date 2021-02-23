@@ -124,19 +124,19 @@ export const MoveForm = () => {
         <h2 className="moveForm__title">Add A Move</h2>
         <fieldset>
           <div className="form-group">
-            <label htmlFor="name">Move name:</label>
+            <label htmlFor="name"><h3>Move Name</h3></label>
             <input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Name" value={move.name} />
           </div>
         </fieldset>
         <fieldset>
           <div className="form-group">
-            <label htmlFor="description">Move description:</label>
+            <label htmlFor="description"><h3>Move Description</h3></label>
             <input type="text" id="description" onChange={handleControlledInputChange} className="form-control" placeholder="Description" value={move.description} />
           </div>
         </fieldset>
         <fieldset>
           <div className="form-group">
-            <label htmlFor="equipment">What equipment do you need? </label>
+            <label htmlFor="equipment"><h3>What equipment do you need?</h3></label>
             <select value={move.equipmentId} id="equipmentId" onChange={handleControlledInputChange} className="form-control" >
               <option value="0">Select your equipment</option>
               {equipment.map(e => (
@@ -149,7 +149,7 @@ export const MoveForm = () => {
         </fieldset>
         <fieldset>
           <div className="form-group">
-            <label htmlFor="muscleGroup">Select a muscle group: </label>
+            <label htmlFor="muscleGroup"><h3>What muscles are you working?</h3></label>
             <select value={move.muscleGroupId} id="muscleGroupId" onChange={handleControlledInputChange} className="form-control" >
               <option value="0">Select a muscle group</option>
               {muscleGroup.map(m => (
