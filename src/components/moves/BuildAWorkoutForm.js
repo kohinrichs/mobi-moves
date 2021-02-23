@@ -96,7 +96,7 @@ export const BuildAWorkoutForm = ({ arrayOfMoves, workout, handleRemoveMove }) =
         <div className="buildAWorkoutForm__moves">
             <ul className="list-group">
                 {movesForWorkout.map(move => (
-                    <li className="buildAWorkoutForm__move" key={move.name}>{move.name} <button className="button__removeMove" onClick={() => { handleRemoveMove(move) }}>x</button></li>
+                    <li className="buildAWorkoutForm__move" key={move.name}>{move.name}<button className="button__removeMove" onClick={() => { handleRemoveMove(move) }}>x</button></li>
                 ))}
             </ul>
             <button className="button__saveWorkout"
