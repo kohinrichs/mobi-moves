@@ -32,7 +32,7 @@ Upon logging in, the user can view their workout library and any previously save
 <img src="./src/components/images/MOBI_workouts.png" alt="MOBI Workout Library" width="100%"></img>
 
 ### Move Library/Build A Workout View
-Users can add moves to a new workout.
+Users can add moves to build a new workout.
 <img src="./src/components/images/MOBI_moveLibrary.png" alt="MOBI Move Library/Build A Workout" width="100%"></img>
 
 # Try It Out
