@@ -1,10 +1,10 @@
 # MOBI
 
-MOBI is designed so users can create the workouts they want with the moves they already know. After building a move library, users can add those moves to build custom workouts that can be saved an used over and over again. No need to carry around sheets of paper or get lost scrolling through Instagram trying to find a workout. Now you have everything you need in one place to keep moving!
+MOBI is designed as a tool for users to create the workouts they want with the moves they already know. After adding moves to their library, users can use the moves to build custom workouts that can be saved and used over and over again. No need to carry around sheets of paper or get lost scrolling through Instagram trying to find a workout. Now you have everything you need in one place to keep moving!
 
 ### Features Highlights Include:
 - Add, edit, or delete moves from your library
-- Create a name, select a time interval and sets, and add moves to a new workout
+- Create a name, select a time interval and number of sets, and add moves to a new workout
 - Custom generated equipment list for each workout based on the added moves
 - Easy workout view so you'll know what you need and what you're going to be doing at a glance
 
@@ -16,10 +16,19 @@ MOBI is designed so users can create the workouts they want with the moves they 
 ### Wireframe
 <img src="./src/components/images/MOBI_Wireframe.png" alt="MOBI Wireframe" width="100%"></img>
 
+## Tools + Technologies
+
+# Development Tools
+Github, Visual Studio Code, dbdiagram, Sketchboard, Postman, JSON Server
+
+# Development Language + Libraries
+React, CSS3
+
+
 ## Views
 
 ### Workout Library View
-Upon loggin in, the user can view their workout library and any previously saved workouts. 
+Upon logging in, the user can view their workout library and any previously saved workouts. 
 <img src="./src/components/images/MOBI_workouts.png" alt="MOBI Workout Library" width="100%"></img>
 
 ### Move Library/Build A Workout View
