@@ -2,7 +2,7 @@
 
 MOBI is designed as a tool for users to create the workouts they want with the moves they already know. After adding moves to their library, users can use the moves to build custom workouts that can be saved and used over and over again. No need to carry around sheets of paper or get lost scrolling through Instagram trying to find a workout. Now you have everything you need in one place to keep moving!
 
-### Features Highlights Include:
+### Feature Highlights Include:
 - Add, edit, or delete moves from your library
 - Create a name, select a time interval and number of sets, and add moves to a new workout
 - Custom generated equipment list for each workout based on the added moves
