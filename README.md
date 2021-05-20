@@ -18,10 +18,10 @@ MOBI is designed as a tool for users to create the workouts they want with the m
 
 ## Tools + Technologies
 
-# Development Tools
+### Development Tools
 Github, Visual Studio Code, dbdiagram, Sketchboard, Postman, JSON Server
 
-# Development Language + Libraries
+### Development Language + Libraries
 React, CSS3
 
 
