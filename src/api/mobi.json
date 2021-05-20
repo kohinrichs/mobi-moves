@@ -1,0 +1,927 @@
+{
+    "users": [
+      {
+        "name": "Kate",
+        "email": "me@me.com",
+        "id": 1
+      },
+      {
+        "email": "j@j.com",
+        "name": "Jessica Mendelsohn",
+        "id": 2
+      },
+      {
+        "email": "b@b.com",
+        "name": "Bob Hinrichs",
+        "id": 3
+      }
+    ],
+    "equipment": [
+      {
+        "name": "Yoga Mat",
+        "id": 1
+      },
+      {
+        "name": "Dumbbells",
+        "id": 2
+      },
+      {
+        "name": "Resistance Bands",
+        "id": 3
+      },
+      {
+        "name": "Ankle Weights",
+        "id": 4
+      },
+      {
+        "name": "Stairs/Bench",
+        "id": 5
+      },
+      {
+        "name": "No equipment",
+        "id": 6
+      }
+    ],
+    "muscleGroups": [
+      {
+        "name": "Upper Body",
+        "id": 1
+      },
+      {
+        "name": "Lower Body",
+        "id": 2
+      },
+      {
+        "name": "Core",
+        "id": 3
+      },
+      {
+        "name": "Cardio",
+        "id": 4
+      },
+      {
+        "name": "Warm Up/Mobility",
+        "id": 5
+      }
+    ],
+    "intervals": [
+      {
+        "intervalTime": "45 seconds / 10 seconds",
+        "id": 1
+      },
+      {
+        "intervalTime": "45 seconds / 15 seconds",
+        "id": 2
+      },
+      {
+        "intervalTime": "60 seconds / 10 seconds",
+        "id": 3
+      },
+      {
+        "intervalTime": "60 seconds / 15 seconds",
+        "id": 4
+      },
+      {
+        "intervalTime": "90 seconds / 15 seconds",
+        "id": 5
+      },
+      {
+        "intervalTime": "90 seconds / 20 seconds",
+        "id": 6
+      }
+    ],
+    "sets": [
+      {
+        "numberOfSets": 2,
+        "id": 1
+      },
+      {
+        "numberOfSets": 3,
+        "id": 2
+      },
+      {
+        "numberOfSets": 4,
+        "id": 3
+      },
+      {
+        "numberOfSets": 5,
+        "id": 4
+      }
+    ],
+    "moves": [
+      {
+        "name": "V Up",
+        "description": "Lie on the ground facing up with your arms extended in front of your head touching the ground. Raise your legs and arms simultaneously from the ground until they touch. Return to your initial position but keep both arms and legs slightly raised.",
+        "equipmentId": 1,
+        "muscleGroupId": 3,
+        "userId": 1,
+        "id": 1
+      },
+      {
+        "name": "Star Abs",
+        "description": "Lie flat on your back like a star. Sweep arms down as you bring your legs in",
+        "equipmentId": 1,
+        "muscleGroupId": 3,
+        "userId": 1,
+        "id": 2
+      },
+      {
+        "name": "One Hundred",
+        "description": "Lie flat on your back. Raise legs and upper body to engage the core. Pump your arms for a count of 100",
+        "equipmentId": 1,
+        "muscleGroupId": 3,
+        "userId": 1,
+        "id": 3
+      },
+      {
+        "name": "Bicycle",
+        "description": "Lie flat on your back. Crunch and alternate opposite arm and knee touches. Fully extend unbent leg.",
+        "equipmentId": 1,
+        "muscleGroupId": 3,
+        "userId": 1,
+        "id": 4
+      },
+      {
+        "name": "Mountain Climbers",
+        "description": "In plank position, alternate bringing a bent leg between your hands.",
+        "equipmentId": 1,
+        "muscleGroupId": 3,
+        "userId": 1,
+        "id": 5
+      },
+      {
+        "name": "Dumbbell Sit-Up",
+        "description": "Do a sit-up while holding a dumbbell over your head with fully extended arms.",
+        "equipmentId": 2,
+        "muscleGroupId": 3,
+        "userId": 1,
+        "id": 6
+      },
+      {
+        "name": "Bridge",
+        "description": "Laying on back with knees bent and flat feet. Engage core and push body up through heels into a straight line.",
+        "equipmentId": 1,
+        "muscleGroupId": 3,
+        "userId": 1,
+        "id": 7
+      },
+      {
+        "name": "Russian Twist",
+        "description": "In seated position, hold dumbbell in the center of your body and lift legs. Twist touching, paddling with weight on each side.",
+        "equipmentId": 2,
+        "muscleGroupId": 3,
+        "userId": 1,
+        "id": 8
+      },
+      {
+        "name": "Butterfly Crunch",
+        "description": "Crunches with legs in the butterfly postion",
+        "equipmentId": 1,
+        "muscleGroupId": 3,
+        "userId": 1,
+        "id": 9
+      },
+      {
+        "name": "Corkscrew",
+        "description": "Lay on back and raise legs staright in the air. Lift hips off the ground sending legs staright up. Twist at the top. Alternate sides.",
+        "equipmentId": 1,
+        "muscleGroupId": 3,
+        "userId": 1,
+        "id": 10
+      },
+      {
+        "name": "Jumping Jack",
+        "description": "Jump. Jump. Jump.",
+        "equipmentId": 6,
+        "muscleGroupId": 4,
+        "userId": 1,
+        "id": 11
+      },
+      {
+        "name": "Step Ups",
+        "description": "Step up alternating legs.",
+        "equipmentId": 5,
+        "muscleGroupId": 4,
+        "userId": 1,
+        "id": 12
+      },
+      {
+        "name": "Plyo Lunges",
+        "description": "Alternate lunges. Jump to switch.",
+        "equipmentId": 6,
+        "muscleGroupId": 4,
+        "userId": 1,
+        "id": 13
+      },
+      {
+        "name": "High Knees",
+        "description": "Get those knees up.",
+        "equipmentId": 6,
+        "muscleGroupId": 4,
+        "userId": 1,
+        "id": 14
+      },
+      {
+        "name": "Arm Swing Squat To Overhead",
+        "description": "Squat with a dumbbell swing. Dumbbell should be over head at the top of the squat.",
+        "equipmentId": 2,
+        "muscleGroupId": 4,
+        "userId": 1,
+        "id": 15
+      },
+      {
+        "name": "Burpees",
+        "description": "Optional push-up. Optional jump",
+        "equipmentId": 6,
+        "muscleGroupId": 4,
+        "userId": 1,
+        "id": 16
+      },
+      {
+        "name": "Side Lunge Leg Lift",
+        "description": "Side lunge. Lift opposite leg to the side. Alternate sides.",
+        "equipmentId": 6,
+        "muscleGroupId": 4,
+        "userId": 1,
+        "id": 17
+      },
+      {
+        "name": "In/Out Squats",
+        "description": "Jump squats. Moving between narrow and wide stance.",
+        "equipmentId": 6,
+        "muscleGroupId": 4,
+        "userId": 1,
+        "id": 18
+      },
+      {
+        "name": "Squat Twists",
+        "description": "Squat with hands clasped behind your head. Twist at the top bringing opposite elbow and knee together.",
+        "equipmentId": 6,
+        "muscleGroupId": 4,
+        "userId": 1,
+        "id": 19
+      },
+      {
+        "name": "Squat Jumps",
+        "description": "Jump at the top of each squat.",
+        "equipmentId": 6,
+        "muscleGroupId": 4,
+        "userId": 1,
+        "id": 20
+      },
+      {
+        "name": "Goblet Squat",
+        "description": "Wide stance squat with dumblell at center of chest.",
+        "equipmentId": 2,
+        "muscleGroupId": 2,
+        "userId": 1,
+        "id": 21
+      },
+      {
+        "name": "Lunge Twist",
+        "description": "Hold dumbell to chest. Lunge twisting into your front leg. Alterate legs.",
+        "equipmentId": 2,
+        "muscleGroupId": 2,
+        "userId": 1,
+        "id": 22
+      },
+      {
+        "name": "Kneeling Squat",
+        "description": "Holding weight at chest, from kneeling come to squat position. Alternate legs on the ups and downs.",
+        "equipmentId": 2,
+        "muscleGroupId": 2,
+        "userId": 1,
+        "id": 23
+      },
+      {
+        "name": "Calf Raise",
+        "description": "Holding weights at chest, raise up on to toes.",
+        "equipmentId": 2,
+        "muscleGroupId": 2,
+        "userId": 1,
+        "id": 24
+      },
+      {
+        "name": "Dead Lift",
+        "description": "Engage core and focus on engaging hamstrings and glutes.",
+        "equipmentId": 2,
+        "muscleGroupId": 2,
+        "userId": 1,
+        "id": 25
+      },
+      {
+        "name": "Good Morning",
+        "description": "Engage core and focus on engaging hamstrings and glutes. Weight resting on shoulders behind head.",
+        "equipmentId": 2,
+        "muscleGroupId": 2,
+        "userId": 1,
+        "id": 26
+      },
+      {
+        "name": "Hip Side Lift",
+        "description": "On all fours with band around quads. Raise knees to the side one at a time.",
+        "equipmentId": 3,
+        "muscleGroupId": 2,
+        "userId": 1,
+        "id": 27
+      },
+      {
+        "name": "Elevated Bridge",
+        "description": "Glute bridge with feet on a step or bench.",
+        "equipmentId": 5,
+        "muscleGroupId": 2,
+        "userId": 1,
+        "id": 28
+      },
+      {
+        "name": "Plie Squat",
+        "description": "Squat from the plie position.",
+        "equipmentId": 6,
+        "muscleGroupId": 2,
+        "userId": 1,
+        "id": 29
+      },
+      {
+        "name": "Rainbow Kicks",
+        "description": "On all fours, extend one leg straight and draw rainbow from one side to the other behind you.",
+        "equipmentId": 1,
+        "muscleGroupId": 2,
+        "userId": 1,
+        "id": 30
+      },
+      {
+        "name": "Bent Leg Foot Pulse",
+        "description": "While standing with band just above knee, bend one leg and flex foot. Push foot back keeping knee bent and foot flexed.",
+        "equipmentId": 3,
+        "muscleGroupId": 2,
+        "userId": 1,
+        "id": 31
+      },
+      {
+        "name": "Tricep Skull Crusher",
+        "description": "Laying on back, raise dumbbell from above head to over head.",
+        "equipmentId": 2,
+        "muscleGroupId": 1,
+        "userId": 1,
+        "id": 32
+      },
+      {
+        "name": "Bicep Curls",
+        "description": "Can alternate arms or do both arms at once.",
+        "equipmentId": 2,
+        "muscleGroupId": 1,
+        "userId": 1,
+        "id": 33
+      },
+      {
+        "name": "Dumbbell Forward Raise",
+        "description": "With staight arms, raise dumbells to shoulder height.",
+        "equipmentId": 2,
+        "muscleGroupId": 1,
+        "userId": 1,
+        "id": 34
+      },
+      {
+        "name": "Arnold Press",
+        "description": "Bicep curl with overhead press.",
+        "equipmentId": 2,
+        "muscleGroupId": 1,
+        "userId": 1,
+        "id": 35
+      },
+      {
+        "name": "Arms 6 Ways",
+        "description": "Bicep curl to arms out straight to the side to overhead and back.",
+        "equipmentId": 2,
+        "muscleGroupId": 1,
+        "userId": 1,
+        "id": 36
+      },
+      {
+        "name": "Chest Fly On Mat",
+        "description": "Flies while laying on back.",
+        "equipmentId": 2,
+        "muscleGroupId": 1,
+        "userId": 1,
+        "id": 37
+      },
+      {
+        "name": "Tricep Kick Backs",
+        "description": "In standing, extend and lift arms behind you while engaging triceps.",
+        "equipmentId": 2,
+        "muscleGroupId": 1,
+        "userId": 1,
+        "id": 38
+      },
+      {
+        "name": "Bent Over Row",
+        "description": "Row while bent over and engaging core.",
+        "equipmentId": 2,
+        "muscleGroupId": 1,
+        "userId": 1,
+        "id": 39
+      },
+      {
+        "name": "Bicep Curls",
+        "description": "arms ",
+        "equipmentId": 2,
+        "muscleGroupId": 1,
+        "userId": 3,
+        "id": 41
+      },
+      {
+        "name": "Bicep Curl",
+        "description": "To the left",
+        "equipmentId": 2,
+        "muscleGroupId": 1,
+        "userId": 3,
+        "id": 42
+      },
+      {
+        "name": "Tricep Kick Backs",
+        "description": "test test",
+        "equipmentId": 2,
+        "muscleGroupId": 1,
+        "userId": 3,
+        "id": 43
+      },
+      {
+        "name": "Burpees",
+        "description": "test test",
+        "equipmentId": 1,
+        "muscleGroupId": 1,
+        "userId": 3,
+        "id": 44
+      },
+      {
+        "name": "Arnold Press",
+        "description": "crunch crunch ",
+        "equipmentId": 2,
+        "muscleGroupId": 1,
+        "userId": 3,
+        "id": 45
+      }
+    ],
+    "workouts": [
+      {
+        "name": "Legs 04",
+        "intervalId": 1,
+        "setId": 1,
+        "userId": 2,
+        "id": 2
+      },
+      {
+        "name": "Core 10",
+        "intervalId": 3,
+        "setId": 3,
+        "userId": 1,
+        "id": 5
+      },
+      {
+        "name": "Core 01",
+        "intervalId": 2,
+        "setId": 3,
+        "userId": 1,
+        "id": 8
+      },
+      {
+        "name": "Core 08",
+        "intervalId": 4,
+        "setId": 2,
+        "userId": 1,
+        "id": 9
+      },
+      {
+        "name": "Arms 03",
+        "intervalId": 2,
+        "setId": 2,
+        "userId": 3,
+        "id": 11
+      },
+      {
+        "name": "Legs 04",
+        "intervalId": 3,
+        "setId": 3,
+        "userId": 1,
+        "id": 12
+      },
+      {
+        "name": "Core 06",
+        "intervalId": 3,
+        "setId": 3,
+        "userId": 1,
+        "id": 15
+      },
+      {
+        "name": "Core 08",
+        "intervalId": 2,
+        "setId": 2,
+        "userId": 3,
+        "id": 16
+      },
+      {
+        "name": "Legs 06",
+        "intervalId": 2,
+        "setId": 3,
+        "userId": 3,
+        "id": 18
+      },
+      {
+        "name": "Core 06",
+        "intervalId": 3,
+        "setId": 2,
+        "userId": 3,
+        "id": 20
+      },
+      {
+        "name": "Arms 04",
+        "intervalId": 2,
+        "setId": 2,
+        "userId": 3,
+        "id": 21
+      },
+      {
+        "name": "Arms 05",
+        "intervalId": 2,
+        "setId": 2,
+        "userId": 3,
+        "id": 22
+      },
+      {
+        "name": "Core 07",
+        "intervalId": 3,
+        "setId": 2,
+        "userId": 3,
+        "id": 23
+      },
+      {
+        "name": "Core 10",
+        "intervalId": 2,
+        "setId": 2,
+        "userId": 3,
+        "id": 24
+      },
+      {
+        "name": "Core 09",
+        "intervalId": 3,
+        "setId": 2,
+        "userId": 3,
+        "id": 25
+      },
+      {
+        "name": "Legs 05",
+        "intervalId": 2,
+        "setId": 2,
+        "userId": 1,
+        "id": 26
+      },
+      {
+        "name": "Arms 01",
+        "intervalId": 2,
+        "setId": 2,
+        "userId": 1,
+        "id": 27
+      },
+      {
+        "name": "Arms 02",
+        "intervalId": 3,
+        "setId": 2,
+        "userId": 1,
+        "id": 28
+      },
+      {
+        "name": "Arms 03",
+        "intervalId": 3,
+        "setId": 2,
+        "userId": 1,
+        "id": 29
+      },
+      {
+        "name": "Leg 07",
+        "intervalId": 3,
+        "setId": 2,
+        "userId": 1,
+        "id": 30
+      }
+    ],
+    "moveCombinations": [
+      {
+        "moveId": 38,
+        "workoutId": 5,
+        "positionInWorkout": 1,
+        "id": 15
+      },
+      {
+        "moveId": 12,
+        "workoutId": 5,
+        "positionInWorkout": 6,
+        "id": 17
+      },
+      {
+        "moveId": 13,
+        "workoutId": 5,
+        "positionInWorkout": 5,
+        "id": 18
+      },
+      {
+        "moveId": 23,
+        "workoutId": 5,
+        "positionInWorkout": 2,
+        "id": 19
+      },
+      {
+        "moveId": 1,
+        "workoutId": 5,
+        "positionInWorkout": 3,
+        "id": 20
+      },
+      {
+        "moveId": 3,
+        "workoutId": 9,
+        "positionInWorkout": 1,
+        "id": 27
+      },
+      {
+        "moveId": 18,
+        "workoutId": 9,
+        "positionInWorkout": 3,
+        "id": 28
+      },
+      {
+        "moveId": 38,
+        "workoutId": 9,
+        "positionInWorkout": 4,
+        "id": 29
+      },
+      {
+        "moveId": 1,
+        "workoutId": 9,
+        "positionInWorkout": 2,
+        "id": 30
+      },
+      {
+        "moveId": 25,
+        "workoutId": 9,
+        "positionInWorkout": 5,
+        "id": 31
+      },
+      {
+        "moveId": 23,
+        "workoutId": 9,
+        "positionInWorkout": 6,
+        "id": 32
+      },
+      {
+        "moveId": 41,
+        "workoutId": 11,
+        "positionInWorkout": 1,
+        "id": 43
+      },
+      {
+        "moveId": 36,
+        "workoutId": 12,
+        "positionInWorkout": 1,
+        "id": 44
+      },
+      {
+        "moveId": 37,
+        "workoutId": 12,
+        "positionInWorkout": 3,
+        "id": 45
+      },
+      {
+        "moveId": 38,
+        "workoutId": 12,
+        "positionInWorkout": 4,
+        "id": 46
+      },
+      {
+        "moveId": 33,
+        "workoutId": 12,
+        "positionInWorkout": 2,
+        "id": 47
+      },
+      {
+        "moveId": 36,
+        "workoutId": 15,
+        "positionInWorkout": 1,
+        "id": 50
+      },
+      {
+        "moveId": 39,
+        "workoutId": 15,
+        "positionInWorkout": 2,
+        "id": 51
+      },
+      {
+        "moveId": 44,
+        "workoutId": 16,
+        "positionInWorkout": 1,
+        "id": 52
+      },
+      {
+        "moveId": 41,
+        "workoutId": 16,
+        "positionInWorkout": 2,
+        "id": 53
+      },
+      {
+        "moveId": 41,
+        "workoutId": 18,
+        "positionInWorkout": 1,
+        "id": 55
+      },
+      {
+        "moveId": 44,
+        "workoutId": 18,
+        "positionInWorkout": 3,
+        "id": 56
+      },
+      {
+        "moveId": 42,
+        "workoutId": 18,
+        "positionInWorkout": 2,
+        "id": 57
+      },
+      {
+        "moveId": 44,
+        "workoutId": 20,
+        "positionInWorkout": 3,
+        "id": 60
+      },
+      {
+        "moveId": 41,
+        "workoutId": 20,
+        "positionInWorkout": 1,
+        "id": 61
+      },
+      {
+        "moveId": 43,
+        "workoutId": 20,
+        "positionInWorkout": 2,
+        "id": 62
+      },
+      {
+        "moveId": 41,
+        "workoutId": 21,
+        "positionInWorkout": 4,
+        "id": 63
+      },
+      {
+        "moveId": 45,
+        "workoutId": 21,
+        "positionInWorkout": 1,
+        "id": 64
+      },
+      {
+        "moveId": 44,
+        "workoutId": 21,
+        "positionInWorkout": 2,
+        "id": 65
+      },
+      {
+        "moveId": 42,
+        "workoutId": 21,
+        "positionInWorkout": 3,
+        "id": 66
+      },
+      {
+        "moveId": 45,
+        "workoutId": 22,
+        "positionInWorkout": 1,
+        "id": 67
+      },
+      {
+        "moveId": 42,
+        "workoutId": 22,
+        "positionInWorkout": 2,
+        "id": 68
+      },
+      {
+        "moveId": 42,
+        "workoutId": 23,
+        "positionInWorkout": 1,
+        "id": 69
+      },
+      {
+        "moveId": 45,
+        "workoutId": 23,
+        "positionInWorkout": 2,
+        "id": 70
+      },
+      {
+        "moveId": 42,
+        "workoutId": 24,
+        "positionInWorkout": 1,
+        "id": 71
+      },
+      {
+        "moveId": 45,
+        "workoutId": 24,
+        "positionInWorkout": 2,
+        "id": 72
+      },
+      {
+        "moveId": 45,
+        "workoutId": 25,
+        "positionInWorkout": 1,
+        "id": 73
+      },
+      {
+        "moveId": 44,
+        "workoutId": 25,
+        "positionInWorkout": 2,
+        "id": 74
+      },
+      {
+        "moveId": 35,
+        "workoutId": 26,
+        "positionInWorkout": 2,
+        "id": 75
+      },
+      {
+        "moveId": 36,
+        "workoutId": 26,
+        "positionInWorkout": 1,
+        "id": 76
+      },
+      {
+        "moveId": 35,
+        "workoutId": 27,
+        "positionInWorkout": 1,
+        "id": 77
+      },
+      {
+        "moveId": 4,
+        "workoutId": 28,
+        "positionInWorkout": 4,
+        "id": 78
+      },
+      {
+        "moveId": 32,
+        "workoutId": 28,
+        "positionInWorkout": 2,
+        "id": 79
+      },
+      {
+        "moveId": 39,
+        "workoutId": 28,
+        "positionInWorkout": 1,
+        "id": 80
+      },
+      {
+        "moveId": 22,
+        "workoutId": 28,
+        "positionInWorkout": 3,
+        "id": 81
+      },
+      {
+        "moveId": 35,
+        "workoutId": 29,
+        "positionInWorkout": 1,
+        "id": 82
+      },
+      {
+        "moveId": 33,
+        "workoutId": 29,
+        "positionInWorkout": 3,
+        "id": 83
+      },
+      {
+        "moveId": 4,
+        "workoutId": 29,
+        "positionInWorkout": 4,
+        "id": 84
+      },
+      {
+        "moveId": 39,
+        "workoutId": 29,
+        "positionInWorkout": 2,
+        "id": 85
+      },
+      {
+        "moveId": 27,
+        "workoutId": 30,
+        "positionInWorkout": 4,
+        "id": 86
+      },
+      {
+        "moveId": 30,
+        "workoutId": 30,
+        "positionInWorkout": 1,
+        "id": 87
+      },
+      {
+        "moveId": 7,
+        "workoutId": 30,
+        "positionInWorkout": 2,
+        "id": 88
+      },
+      {
+        "moveId": 29,
+        "workoutId": 30,
+        "positionInWorkout": 3,
+        "id": 89
+      }
+    ]
+  }

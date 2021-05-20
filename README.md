@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# MOBI
+
+MOBI is designed so users can create the workouts they want with the moves they already know. After building a move library, users can add those moves to build custom workouts that can be saved an used over and over again. No need to carry around sheets of paper or get lost scrolling through Instagram trying to find a workout. Now you have everything you need in one place to keep moving!
+
+### Features Highlights Include:
+- Add, edit, or delete moves from your library
+- Create a name, select a time interval and sets, and add moves to a new workout
+- Custom generated equipment list for each workout based on the added moves
+- Easy workout view so you'll know what you need and what you're going to be doing at a glance
+
+## Planning Documentation
+
+### Entity Relationship Diagram
+<img src="./src/components/images/MOBI_ERD.png" alt="MOBI Entity Relationship Diagram" width="100%"></img>
+
+### Wireframe
+<img src="./src/components/images/MOBI_Wireframe.png" alt="MOBI Wireframe" width="100%"></img>
+
+## Views
+
+### Workout Library View
+Upon loggin in, the user can view their workout library and any previously saved workouts. 
+<img src="./src/components/images/MOBI_workouts.png" alt="MOBI Workout Library" width="100%"></img>
+
+### Move Library/Build A Workout View
+Users can add moves to a new workout.
+<img src="./src/components/images/MOBI_moveLibrary.png" alt="MOBI Move Library/Build A Workout" width="100%"></img>
+
+# Try It Out
+To run ***MOBI*** locally, clone the project by running the following command in your terminal:
+> `git clone git@github.com:kohinrichs/mobi-moves.git`
+
+Once you have the project cloned in your terminal, run:
+> `npm install`
+
+This will install the libraries and other dependencies used by ***MOBI***.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Running the Database
+You must run JSON server in another instance of your terminal so you will have access to the data that ***MOBI*** is capturing. Navigate to the api directory and run the following command:
+> `json-server -p 8088 mobi.json`
 
+This will run the provided sample database on port 8088. Please note that since this test database is inside the development folder, changes to the database may cause the app to refresh. To avoid this, copy `api/mobi.json` to a folder outside the ***Mobi*** directory and run the above command from there.
+
+## Running the App
 In the project directory, you can run:
+> `npm start`
 
-### `npm start`
+This runs the app in the development mode.
+Open http://localhost:3000 to view ***MOBI*** in your browser.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Log in to the app using the email `me@me.com` to start using ***MOBI***.
 
 ## Learn More
+You can learn more in the [Create React App](https://github.com/facebook/create-react-app) documentation.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To learn React, check out the [React](https://reactjs.org/) documentation.
